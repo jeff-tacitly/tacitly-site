@@ -12,129 +12,171 @@
     <link rel="stylesheet" href="assets/css/aos.css">
     <link rel="stylesheet" href="assets/css/style.css">
 	<style>
-	.contact_sec {
-    background-color: #151515;
-    color: white;
-}
+		.contact_sec {
+			background-color: #151515;
+			color: white;
+		}
 		.platform_img {
-    width: auto;
-    filter: brightness(0) invert(1);
-}
+			width: auto;
+			filter: brightness(0) invert(1);
+		}
 		.btn_primary {
-    background-color: #37c5dc;
-}
+			background-color: #37c5dc;
+		}
 		.footer_logo {
-    filter: hue-rotate(84deg);
-}
-				.header_logo {
-    filter: hue-rotate(84deg);
-}
+			filter: hue-rotate(84deg);
+		}
+		.header_logo {
+			filter: hue-rotate(84deg);
+		}
 
+		/* Horizontal Scrollable News Section Styling */
 		.news_sec {
-    background-color: #f9f9f9;
-    padding: 80px 0;
-}
+			background-color: #f9f9f9;
+			padding: 60px 0;
+			overflow-hidden;
+		}
 
 		.news_secTitle {
-    font-weight: 700;
-    margin-bottom: 50px;
-    color: #1a1a1a;
-}
+			font-weight: 700;
+			margin-bottom: 35px;
+			color: #1a1a1a;
+		}
+
+		/* Scroll wrapper configuration */
+		.news_scroll_wrapper {
+			overflow-x: auto;
+			overflow-y: hidden;
+			display: flex;
+			flex-wrap: nowrap;
+			padding-bottom: 20px;
+			scroll-behavior: smooth;
+			-webkit-overflow-scrolling: touch;
+		}
+
+		/* Custom scrollbar tracking */
+		.news_scroll_wrapper::-webkit-scrollbar {
+			height: 6px;
+		}
+		.news_scroll_wrapper::-webkit-scrollbar-track {
+			background: #e0e0e0;
+			border-radius: 10px;
+		}
+		.news_scroll_wrapper::-webkit-scrollbar-thumb {
+			background: #37c5dc;
+			border-radius: 10px;
+		}
+
+		/* Forces exactly 3 columns visible on large screens with gutter math built-in */
+		.news_scroll_item {
+			flex: 0 0 100%;
+			max-width: 100%;
+		}
+		@media (min-width: 768px) {
+			.news_scroll_item {
+				flex: 0 0 50%;
+				max-width: 50%;
+			}
+		}
+		@media (min-width: 992px) {
+			.news_scroll_item {
+				flex: 0 0 33.333333%;
+				max-width: 33.333333%;
+			}
+		}
 
 		.news_card {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
+			background: white;
+			border-radius: 12px;
+			overflow: hidden;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+		}
 
 		.news_card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-}
+			transform: translateY(-5px);
+			box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+		}
 
 		.news_image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    background-color: #e0e0e0;
-}
+			width: 100%;
+			height: 200px;
+			object-fit: cover;
+			background-color: #e0e0e0;
+		}
 
 		.news_content {
-    padding: 24px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
+			padding: 24px;
+			flex-grow: 1;
+			display: flex;
+			flex-direction: column;
+		}
 
 		.news_publication {
-    display: inline-block;
-    background-color: #37c5dc;
-    color: white;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-    width: fit-content;
-}
+			display: inline-block;
+			background-color: #37c5dc;
+			color: white;
+			padding: 4px 12px;
+			border-radius: 20px;
+			font-size: 11px;
+			font-weight: 600;
+			text-transform: uppercase;
+			margin-bottom: 12px;
+			width: fit-content;
+		}
 
 		.news_title {
-    font-size: 18px;
-    font-weight: 600;
-    color: #1a1a1a;
-    margin-bottom: 12px;
-    line-height: 1.4;
-    flex-grow: 1;
-}
+			font-size: 16px;
+			font-weight: 600;
+			color: #1a1a1a;
+			margin-bottom: 12px;
+			line-height: 1.4;
+			flex-grow: 1;
+		}
 
 		.news_excerpt {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 16px;
-    line-height: 1.5;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
+			font-size: 14px;
+			color: #666;
+			margin-bottom: 16px;
+			line-height: 1.5;
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+		}
 
 		.news_footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 12px;
-    border-top: 1px solid #f0f0f0;
-}
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding-top: 12px;
+			border-top: 1px solid #f0f0f0;
+		}
 
 		.news_date {
-    font-size: 12px;
-    color: #999;
-}
+			font-size: 12px;
+			color: #999;
+		}
 
 		.news_link {
-    display: inline-block;
-    color: #37c5dc;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 13px;
-    transition: color 0.3s ease;
-}
+			display: inline-block;
+			color: #37c5dc;
+			text-decoration: none;
+			font-weight: 600;
+			font-size: 13px;
+			transition: color 0.3s ease;
+		}
 
 		.news_link:hover {
-    color: #2da8bb;
-}
-	
+			color: #2da8bb;
+		}
 	</style>
 </head>
 
 <body>
-    <!-- ....................... start header section  ....................... -->
     <header class="header sticky-top">
         <div class="container">
             <nav class="navbar navbar-expand-xl d-flex justify-content-between py-0">
@@ -144,15 +186,9 @@
                 <div class="header_backDrop"></div>
                 <div class="header_navContent" id="header_navContent">
                     <button class="navbar-toggler fs_md2 p-1 menu_toggleBtn d-xl-none rounded-pill ms-auto" type="button">
-                        <img  class="inline_icon" src="assets/img/cross_icon.svg" alt="">
+                        <img class="inline_icon" src="assets/img/cross_icon.svg" alt="">
                     </button>
                     <ul class="navbar-nav align-items-center">
-                       <!-- <li class="nav-item">
-                             <a class="nav-link" href="careers.html">Careers</a>
-                         </li>
-                         <li class="nav-item">
-                             <a class="nav-link" href="platform.html">Platform</a>
-                         </li>-->
                          <li class="nav-item">
                              <a class="btn btn_primary fs_sm rounded-pill" href="mailto:contact@tacitly.com">Contact</a>
                          </li>
@@ -160,17 +196,13 @@
                 </div>
 
                 <button class="navbar-toggler fs_md2 p-1 menu_toggleBtn" type="button">
-                    <img  class="inline_icon" src="assets/img/menu_icon.svg" alt="">
+                    <img class="inline_icon" src="assets/img/menu_icon.svg" alt="">
                 </button>
             </nav>
         </div>
     </header>
-    <!-- ....................... end header section  ....................... -->
-
-    <!-- ....................... start main section  ....................... -->
     <main class="main">
-         <!-- start hero section -->
-        <section class="hero_sec">
+         <section class="hero_sec">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-6">
@@ -196,19 +228,18 @@
                 </div>
             </div>
         </section>
-         <!-- end hero section -->
-
-         <!-- start video section -->
-		
-        <section class="video_sec" data-aos="fade-in" data-aos-delay="200">
+         <section class="news_sec">
+             <div class="container">
+                 <h2 class="news_secTitle text-center" data-aos="fade-up">In the Media</h2>
+                 <div class="news_scroll_wrapper g-4" id="newsContainer">
+                     </div>
+             </div>
+         </section>
+         <section class="video_sec" data-aos="fade-in" data-aos-delay="200">
              <div class="video_box">
                  <video src="assets/videos/webloop.mp4" autoplay loop muted playsinline></video>
              </div>
          </section>
-		
-         <!-- end video section -->
-
-         <!-- start featured section -->
          <section class="featured_sec">
              <div class="container container_xsm">
                  <h2 class="featured_secTitle fs_md3 c_black text-center" data-aos="fade-up">We've built solutions for</h2>
@@ -231,160 +262,7 @@
                  </div>
              </div>
          </section>
-         <!-- end featured section -->
-
-         <!-- start news section -->
-         <section class="news_sec">
-             <div class="container">
-                 <h2 class="news_secTitle text-center" data-aos="fade-up">In the Media</h2>
-                 <div class="row g-4" id="newsContainer">
-                     <!-- News cards will be generated by JavaScript -->
-                 </div>
-             </div>
-         </section>
-         <!-- end news section -->
-
-         <!-- start platform section -->
-      <!--       <section class="platform_sec">
-             <div class="container container_lg">
-                 <h2 class="platform_secTitle sec_title c_white text-center" data-aos="fade-up">All-in-One Training for Healthcare Teams</h2>
-                 <p class="platform_secDesc fs_md2 c_light text-center" data-aos="fade-up" data-aos-delay="200">Tacitly XR makes medical training easy and hands-on. From crash cart skills to oper[...]
-                 <div class="row justify-content-center g-3 gy-4">
-                     <div class="col-6 col-md-4 col-lg-2">
-                         <div class="platform_item" data-aos="zoom-out" data-aos-delay="400">
-                              <div class="platform_imgBox">
-                                  <img class="platform_img" src="assets/img/crash_carts.svg" alt="Crash Carts">
-                              </div>
-                              <div class="platform_name">Crash Carts</div>
-                          </div>
-                      </div>
-                      <div class="col-6 col-md-4 col-lg-2">
-                          <div class="platform_item" data-aos="zoom-out" data-aos-delay="500">
-                              <div class="platform_imgBox">
-                                  <img class="platform_img" src="assets/img/defibrillator_use.svg" alt="Defibrillator Use">
-                              </div>
-                              <div class="platform_name">Defibrillator Use</div>
-                          </div>
-                      </div>
-                  <div class="col-6 col-md-4 col-lg-2">
-                          <div class="platform_item" data-aos="zoom-out" data-aos-delay="600">
-                              <div class="platform_imgBox">
-                                  <img class="platform_img" src="assets/img/crash_carts.svg" alt="Sterile Kit Handling">
-                              </div>
-                              <div class="platform_name">Sterile Kit Handling</div>
-                          </div>
-                      </div>
-                      <div class="col-6 col-md-4 col-lg-2">
-                          <div class="platform_item" data-aos="zoom-out" data-aos-delay="700">
-                              <div class="platform_imgBox">
-                                  <img class="platform_img" src="assets/img/or_prep.svg" alt="O.R. Prep">
-                              </div>
-                              <div class="platform_name">O.R. Prep</div>
-                          </div>
-                      </div>
-                      <div class="col-6 col-md-4 col-lg-2">
-                          <div class="platform_item" data-aos="zoom-out" data-aos-delay="800">
-                              <div class="platform_imgBox">
-                                  <img class="platform_img" src="assets/img/medicine_stocking.svg" alt="Medicine Stocking">
-                              </div>
-                              <div class="platform_name">Medicine Stocking</div>
-                          </div>
-                      </div>
-                      <div class="col-6 col-md-4 col-lg-2">
-                          <div class="platform_item" data-aos="zoom-out" data-aos-delay="900">
-                              <div class="platform_imgBox">
-                                  <img class="platform_img" src="assets/img/medical_devices.svg" alt="Medical Devices">
-                              </div>
-                              <div class="platform_name">Medical Devices</div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </section>-->
-         <!-- end platform section -->
-
-         <!-- start feedbacks section -->
-        <!-- <section class="feedbacks_sec">
-             <div class="container">
-                 <h2 class="feedbacks_secTitle sec_title text-center" data-aos="fade-up">Frontline Feedback: Medical Simulation Training</h2>
-                 <div class="row g_lg gy-4">
-                     <div class="col-md-6 col-lg-4">
-                         <div class="feedback_item" data-aos="fade-right" data-aos-delay="200">
-                              <div class="client_name fs_lg">Daniel Robinson</div>
-                              <div class="client_status fs_md c_gray">Simulation Technology Technician</div>
-                              <img class="client_companyLogo" src="assets/img/Dartmouth_Health.png" alt="Dartmouth Health">
-                              <p class="fs_sm c_darkLight mb-0">
-                                  "Tacitly has a great team of energetic professionals. They are always ready to jump on a project and regardless of the difficulty, find a way to exceed expectati[...]
-                              </p>
-                          </div>
-                      </div>
-                      <div class="col-md-6 col-lg-4">
-                          <div class="feedback_item" data-aos="zoom-out" data-aos-delay="200">
-                              <div class="client_name fs_lg">Jennifer L. Scott, PsyD, ABPP</div>
-                              <div class="client_status fs_md c_gray">Executive Director</div>
-                              <img class="client_companyLogo" src="assets/img/AHEC_2.png" alt="AHEC">
-                              <p class="fs_sm c_darkLight mb-0">
-                                  "Tacitly is on the cutting edge of the technology revolution! Partnering with them has allowed us to incorporate extended reality simulations into our programmin[...]
-                              </p>
-                          </div>
-                      </div>
-                      <div class="col-md-6 col-lg-4">
-                          <div class="feedback_item" data-aos="fade-left" data-aos-delay="200">
-                              <div class="client_name fs_lg">Caitlin Gates</div>
-                              <div class="client_status fs_md c_gray">Training & Education Coordinator</div>
-                              <img class="client_companyLogo" src="assets/img/Rutland_Regional_Medical_Center.png" alt="Rutland Regional Medical Center">
-                              <p class="fs_sm c_darkLight mb-0">
-                                  "We love the concept and feel that it is an exciting educational tool for people who are interested in pursing a career in healthcare. The team at Tacitly is pro[...]
-                              </p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </section>-->
-         <!-- end feedbacks section -->
-
-         <!-- start contact section -->
-	    <!-- 
-         <section class="contact_sec" id="contact">
-             <div class="container container_sm">
-                 <div class="row align-items-center">
-                     <div class="col-lg-6">
-                         <h2 class="contact_secTitle fs_xxl" data-aos="fade-up">Contact Us:</h2>
-                     </div>
-                     <div class="col-lg-6">
-						<div id="returnmessage" class="text-center">Your message has been received, We will contact you soon.</div>
-                         <div class="contact_formBox">
-                             <form id="contactform" method="post" onsubmit="return false">
-                                 <div class="inp_item">
-                                     <label class="inp_label">Name</label>
-                                     <input class="form-control" type="text" id="name">
-                                 </div>
-                                 <div class="inp_item">
-                                     <label class="inp_label">Email</label>
-                                     <input class="form-control" type="email" id="email">
-                                 </div>
-                                 <div class="inp_item">
-                                     <label class="inp_label">Message</label>
-                                     <textarea class="form-control" row="2" id="message"></textarea>
-                                 </div>
-                                 <div>
-                                     <button class="btn btn-light fs_sm rounded-pill w-100" type="submit">Submit Message</button>
-                                 </div>
-                             </form>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </section>-->
-         <!-- end contact section -->
-
-         <!-- start subscribe section -->
-
-         <!-- end subscribe section -->
-    </main>
-    <!-- ....................... end main section  ....................... -->
-
-    <!-- ....................... start footer section  ....................... -->
+         </main>
     <footer class="footer">
         <div class="container container_lg">
             <div class="row align-items-center gy-3">
@@ -396,30 +274,31 @@
                 <div class="col-md-6">
                     <p class="footer_cText text-center fs_sm mb-0">
                         Tacitly Inc. &copy; <span id="year"></span> <br>
-                        
                     </p>
                 </div>
                 <div class="col-md-3">
-                    <ul class="footer_nav">
-                    </ul>
+                    <ul class="footer_nav"></ul>
                 </div>
             </div>
         </div>
     </footer>
-    <!-- ....................... end footer section  ....................... -->
-
-
     <script src="assets/js/jquery-3.7.0.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/aos.js"></script>
     <script src="assets/js/script.js"></script>
 
     <script>
-        // Set current year in footer
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // News data - Edit this array to add/remove/update news items
         const newsData = [
+            {
+                title: "Five Startups Selected For Rutland's First-Ever Venture-Backed Accelerator",
+                publication: "Mountain Times",
+                excerpt: "Tacitly Inc. was selected as one of five startups chosen from 50+ applicants for the gBETA Rutland program, recognized for growth potential and investor readiness.",
+                date: "September 11, 2024",
+                link: "https://mountaintimes.info/2024/09/11/five-startups-selected-for-rutlandsfirst-ever-venture-backed-accelerator/",
+                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop"
+            },
             {
                 title: "Green Mountain Accelerator Fund Makes First Investment in Tacitly",
                 publication: "Center on Rural Innovation",
@@ -427,6 +306,14 @@
                 date: "June 2024",
                 link: "https://ruralinnovation.us/press-releases/green-mountain-accelerator-fund-makes-first-investment/",
                 image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop"
+            },
+            {
+                title: "Tacitly, a StartUp Rutland Incubator Company Posts Big Progress",
+                publication: "Rutland Vermont",
+                excerpt: "Tacitly achieved milestones including LaunchVT cohort selection, a $5,000 AHEC grant, and first beta tests with 50+ nursing students at UVM and Castleton University.",
+                date: "2024",
+                link: "https://rutlandvermont.com/tacitly-a-startup-rutland-incubator-company-posts-big-progress/",
+                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop"
             },
             {
                 title: "A Rutland Startup Created a Virtual Reality Tool to Train Nurses in Emergency Responses",
@@ -453,49 +340,33 @@
                 image: "https://images.unsplash.com/photo-1579154204601-01d3f2d751d0?w=600&h=400&fit=crop"
             },
             {
-                title: "Southern Vermont AHEC Sponsors Tacitly's Innovative Work",
-                publication: "Southern Vermont AHEC",
-                excerpt: "Southern Vermont AHEC is thrilled to sponsor Tacitly's innovative work and be part of this groundbreaking initiative in healthcare training.",
-                date: "2023",
-                link: "https://www.facebook.com/svahec/posts/690107573125844/",
-                image: "https://images.unsplash.com/photo-1576091160625-4dbb5c16e0ae?w=600&h=400&fit=crop"
-            },
-            {
-                title: "Five Startups Selected For Rutland's First-Ever Venture-Backed Accelerator",
-                publication: "Mountain Times",
-                excerpt: "Tacitly Inc. was selected as one of five startups chosen from 50+ applicants for the gBETA Rutland program, recognized for growth potential and investor readiness.",
-                date: "September 11, 2024",
-                link: "https://mountaintimes.info/2024/09/11/five-startups-selected-for-rutlandsfirst-ever-venture-backed-accelerator/",
-                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop"
-            },
-            {
-                title: "Tacitly, a StartUp Rutland Incubator Company Posts Big Progress",
-                publication: "Rutland Vermont",
-                excerpt: "Tacitly achieved milestones including LaunchVT cohort selection, a $5,000 AHEC grant, and first beta tests with 50+ nursing students at UVM and Castleton University.",
-                date: "2024",
-                link: "https://rutlandvermont.com/tacitly-a-startup-rutland-incubator-company-posts-big-progress/",
-                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop"
-            },
-            {
                 title: "LaunchVT Announces 2023 Accelerator Cohort",
                 publication: "Vermont Biz",
                 excerpt: "LaunchVT's 2023 cohort includes eight Vermont startups paired with dedicated business coaches for a twelve-week intensive accelerator program.",
                 date: "April 2023",
                 link: "https://vermontbiz.com/news/2023/april/12/launchvt-announces-2023-accelerator-cohort",
                 image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop"
+            },
+            {
+                title: "Southern Vermont AHEC Sponsors Tacitly's Innovative Work",
+                publication: "Southern Vermont AHEC",
+                excerpt: "Southern Vermont AHEC is thrilled to sponsor Tacitly's innovative work and be part of this groundbreaking initiative in healthcare training.",
+                date: "2023",
+                link: "https://www.facebook.com/svahec/posts/690107573125844/",
+                image: "https://images.unsplash.com/photo-1576091160625-4dbb5c16e0ae?w=600&h=400&fit=crop"
             }
         ];
 
-        // Function to render news cards
         function renderNewsCards() {
             const container = document.getElementById('newsContainer');
             container.innerHTML = '';
 
             newsData.forEach((item, index) => {
                 const col = document.createElement('div');
-                col.className = 'col-12 col-md-6 col-lg-4';
+                // Updated layout classes for the horizontal slider setup
+                col.className = 'news_scroll_item px-2';
                 col.setAttribute('data-aos', 'fade-up');
-                col.setAttribute('data-aos-delay', (index * 100).toString());
+                col.setAttribute('data-aos-delay', (index * 50).toString());
 
                 const card = document.createElement('div');
                 card.className = 'news_card';
@@ -515,7 +386,6 @@
                 container.appendChild(col);
             });
 
-            // Reinitialize AOS for new elements
             if (typeof AOS !== 'undefined') {
                 AOS.refresh();
             }
@@ -523,25 +393,6 @@
 
         $(document).ready(function() {
             renderNewsCards();
-
-            $("#returnmessage").hide();
-            $("#contactform").submit(function() {
-                var name = $("#name").val();
-                var email = $("#email").val();
-                var message = $("#message").val();
-                $.post("contact.php", {
-                    name1: name,
-                    email1: email,
-                    message1: message,
-                }, function(result) {
-                    $("#returnmessage").show();
-                    $("#name").hide();
-                    $("#email").hide();
-                    $("#message").hide();
-                    $("#submit").hide();
-
-                });
-            });
         });
     </script>
 </body>
