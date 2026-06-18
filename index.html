@@ -23,51 +23,120 @@
 		.btn_primary {
 			background-color: #37c5dc;
 		}
-		.footer_logo {
-			filter: hue-rotate(84deg);
-		}
-		.header_logo {
+		.footer_logo, .header_logo {
 			filter: hue-rotate(84deg);
 		}
 
-		/* Horizontal Scrollable News Section Styling */
+		/* ==========================================================================
+		   Global Spacing & Theme Improvements
+		   ========================================================================== */
+		.featured_sec {
+			padding: 50px 0;
+			border-bottom: 1px solid #f0f0f0;
+			background: #ffffff;
+		}
+		.video_sec {
+			padding: 80px 0;
+			background: #111;
+		}
+
+		/* ==========================================================================
+		   Professional Testimonials Section (Frontline Feedback)
+		   ========================================================================== */
+		.feedbacks_sec {
+			background-color: #ffffff;
+			padding: 90px 0;
+		}
+		.feedbacks_secTitle {
+			font-weight: 700;
+			color: #1a1a1a;
+			margin-bottom: 50px;
+		}
+		.feedback_item {
+			background: #ffffff;
+			border-radius: 16px;
+			padding: 32px;
+			border: 1px solid #eaeaea;
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+			height: 100%; /* Keeps all cards perfectly equal height */
+			display: flex;
+			flex-direction: column;
+		}
+		.feedback_item:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+			border-color: #37c5dc;
+		}
+		.client_name {
+			font-weight: 700;
+			color: #1a1a1a;
+			font-size: 18px;
+			margin-bottom: 2px;
+		}
+		.client_status {
+			font-size: 13px;
+			color: #777;
+			font-weight: 500;
+			margin-bottom: 20px;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+		}
+		.client_companyLogo {
+			max-height: 45px;
+			width: auto;
+			object-fit: contain;
+			margin-bottom: 24px;
+			display: block;
+		}
+		.feedback_text {
+			font-size: 14px;
+			color: #444;
+			line-height: 1.6;
+			font-style: italic;
+			margin-bottom: 0;
+			position: relative;
+		}
+
+		/* ==========================================================================
+		   Optimized News Slider Setup
+		   ========================================================================== */
 		.news_sec {
 			background-color: #f9f9f9;
-			padding: 60px 0;
-			overflow-hidden;
+			padding: 90px 0;
 		}
-
 		.news_secTitle {
 			font-weight: 700;
-			margin-bottom: 35px;
+			margin-bottom: 40px;
 			color: #1a1a1a;
 		}
-
-		/* Scroll wrapper configuration */
+		.news_slider_container {
+			position: relative;
+			display: flex;
+			align-items: center;
+		}
 		.news_scroll_wrapper {
 			overflow-x: auto;
 			overflow-y: hidden;
 			display: flex;
 			flex-wrap: nowrap;
-			padding-bottom: 20px;
+			padding: 15px 5px 25px 5px;
 			scroll-behavior: smooth;
 			-webkit-overflow-scrolling: touch;
+			width: 100%;
 		}
-
-		/* Custom scrollbar tracking */
+		/* Hidden native scrollbar for seamless touch but left functional logic */
 		.news_scroll_wrapper::-webkit-scrollbar {
-			height: 6px;
+			height: 5px;
 		}
 		.news_scroll_wrapper::-webkit-scrollbar-track {
-			background: #e0e0e0;
+			background: #ebeeef;
 			border-radius: 10px;
 		}
 		.news_scroll_wrapper::-webkit-scrollbar-thumb {
 			background: #37c5dc;
 			border-radius: 10px;
 		}
-
-		/* Forces exactly 3 columns visible on large screens with gutter math built-in */
 		.news_scroll_item {
 			flex: 0 0 100%;
 			max-width: 100%;
@@ -84,50 +153,75 @@
 				max-width: 33.333333%;
 			}
 		}
-
+		.slide_btn {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 46px;
+			height: 46px;
+			background: white;
+			border: 1px solid #e2e8f0;
+			border-radius: 50%;
+			display: none;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+			z-index: 10;
+			transition: all 0.2s ease;
+			font-size: 16px;
+			color: #1a1a1a;
+		}
+		.slide_btn:hover {
+			background: #37c5dc;
+			color: white;
+			border-color: #37c5dc;
+			box-shadow: 0 6px 15px rgba(55, 197, 220, 0.3);
+		}
+		.slide_btn_left { left: -22px; }
+		.slide_btn_right { right: -22px; }
+		@media (min-width: 1200px) {
+			.slide_btn { display: flex; }
+		}
 		.news_card {
 			background: white;
 			border-radius: 12px;
 			overflow: hidden;
-			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 			transition: transform 0.3s ease, box-shadow 0.3s ease;
 			height: 100%;
 			display: flex;
 			flex-direction: column;
+			border: 1px solid #f0f0f0;
 		}
-
 		.news_card:hover {
 			transform: translateY(-5px);
-			box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+			box-shadow: 0 10px 25px rgba(0, 0, 0, 0.09);
 		}
-
 		.news_image {
 			width: 100%;
-			height: 200px;
+			height: 190px;
 			object-fit: cover;
-			background-color: #e0e0e0;
+			background-color: #eef2f3;
 		}
-
 		.news_content {
 			padding: 24px;
 			flex-grow: 1;
 			display: flex;
 			flex-direction: column;
 		}
-
 		.news_publication {
 			display: inline-block;
-			background-color: #37c5dc;
-			color: white;
+			background-color: rgba(55, 197, 220, 0.1);
+			color: #1f8e9f;
 			padding: 4px 12px;
 			border-radius: 20px;
 			font-size: 11px;
 			font-weight: 600;
 			text-transform: uppercase;
-			margin-bottom: 12px;
+			margin-bottom: 14px;
 			width: fit-content;
 		}
-
 		.news_title {
 			font-size: 16px;
 			font-weight: 600;
@@ -136,7 +230,6 @@
 			line-height: 1.4;
 			flex-grow: 1;
 		}
-
 		.news_excerpt {
 			font-size: 14px;
 			color: #666;
@@ -147,32 +240,15 @@
 			-webkit-box-orient: vertical;
 			overflow: hidden;
 		}
-
 		.news_footer {
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
 			padding-top: 12px;
-			border-top: 1px solid #f0f0f0;
+			border-top: 1px solid #f2f2f2;
 		}
-
-		.news_date {
-			font-size: 12px;
-			color: #999;
-		}
-
-		.news_link {
-			display: inline-block;
-			color: #37c5dc;
-			text-decoration: none;
-			font-weight: 600;
-			font-size: 13px;
-			transition: color 0.3s ease;
-		}
-
-		.news_link:hover {
-			color: #2da8bb;
-		}
+		.news_date { font-size: 12px; color: #999; }
+		.news_link { color: #37c5dc; text-decoration: none; font-weight: 600; font-size: 13px; }
 	</style>
 </head>
 
@@ -194,7 +270,6 @@
                          </li>
                     </ul>
                 </div>
-
                 <button class="navbar-toggler fs_md2 p-1 menu_toggleBtn" type="button">
                     <img class="inline_icon" src="assets/img/menu_icon.svg" alt="">
                 </button>
@@ -202,7 +277,7 @@
         </div>
     </header>
     <main class="main">
-         <section class="hero_sec">
+        <section class="hero_sec">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-6">
@@ -211,7 +286,6 @@
                                 Train Faster. Perform with Confidence.
                             </h1>
                             <p class="hero_desc fs_md2 c_darkLight" data-aos="fade-up" data-aos-delay="200">Immersive crash cart training in XR that helps healthcare teams build speed, confidence, and competence. Tacitly's platform delivers realistic, hands-on medical simulation training.</p>
-
                             <div data-aos="fade-up" data-aos-delay="400">
                                 <a class="btn btn_primary rounded-pill hero_actBtn hero_actBtn1" href="mailto:contact@tacitly.com">Talk To Us</a>
                                 <a class="btn btn-outline-light border rounded-pill hero_actBtn hero_actBtn2" href="https://www.meta.com/experiences/8149083865106956/" target="_blank">
@@ -228,41 +302,77 @@
                 </div>
             </div>
         </section>
-         <section class="news_sec">
-             <div class="container">
-                 <h2 class="news_secTitle text-center" data-aos="fade-up">In the Media</h2>
-                 <div class="news_scroll_wrapper g-4" id="newsContainer">
-                     </div>
+
+        <section class="featured_sec">
+             <div class="container container_xsm">
+                 <h2 class="featured_secTitle text-center mb-4" data-aos="fade-up" style="font-size: 12px; font-weight:700; text-transform: uppercase; letter-spacing: 1.5px; color: #999 !important;">We've built solutions for</h2>
+                 <div class="row align-items-center justify-content-center row-cols-2 row-cols-sm-5 g-4">
+                     <div class="col text-center"><img class="featured_logo img-fluid" style="max-height: 38px; object-fit: contain; filter: grayscale(1) opacity(0.6);" data-aos="zoom-in" data-aos-delay="100" src="assets/img/dh.png" alt="Dartmouth Health"></div>
+                     <div class="col text-center"><img class="featured_logo img-fluid" style="max-height: 38px; object-fit: contain; filter: grayscale(1) opacity(0.6);" data-aos="zoom-in" data-aos-delay="200" src="assets/img/uvm.png" alt="UVM Health"></div>
+                     <div class="col text-center"><img class="featured_logo img-fluid" style="max-height: 38px; object-fit: contain; filter: grayscale(1) opacity(0.6);" data-aos="zoom-in" data-aos-delay="300" src="assets/img/franciscan.png" alt="Franciscan Health"></div>
+                     <div class="col text-center"><img class="featured_logo img-fluid" style="max-height: 38px; object-fit: contain; filter: grayscale(1) opacity(0.6);" data-aos="zoom-in" data-aos-delay="400" src="assets/img/rrmc.png" alt="RRMC"></div>
+                     <div class="col text-center"><img class="featured_logo img-fluid" style="max-height: 38px; object-fit: contain; filter: grayscale(1) opacity(0.6);" data-aos="zoom-in" data-aos-delay="500" src="assets/img/harloff.png" alt="Harloff"></div>
+                 </div>
              </div>
-         </section>
-         <section class="video_sec" data-aos="fade-in" data-aos-delay="200">
+        </section>
+
+        <section class="video_sec" data-aos="fade-in">
              <div class="video_box">
                  <video src="assets/videos/webloop.mp4" autoplay loop muted playsinline></video>
              </div>
-         </section>
-         <section class="featured_sec">
-             <div class="container container_xsm">
-                 <h2 class="featured_secTitle fs_md3 c_black text-center" data-aos="fade-up">We've built solutions for</h2>
-                 <div class="row gy-4">
-                     <div class="col-6 col-sm-3 col-md_20">
-                         <img class="featured_logo img-fluid" data-aos="zoom-in" data-aos-delay="200" src="assets/img/dh.png" alt="Dartmouth Health">
+        </section>
+
+        <section class="feedbacks_sec">
+             <div class="container">
+                 <h2 class="feedbacks_secTitle text-center fs_xl" data-aos="fade-up">Frontline Feedback: Medical Simulation Training</h2>
+                 <div class="row g-4 match-height">
+                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                         <div class="feedback_item">
+                              <div class="client_name">Daniel Robinson</div>
+                              <div class="client_status">Simulation Technology Technician</div>
+                              <img class="client_companyLogo" src="assets/img/Dartmouth_Health.png" alt="Dartmouth Health">
+                              <p class="feedback_text">
+                                  "Tacitly has a great team of energetic professionals. They are always ready to jump on a project and regardless of the difficulty, find a way to exceed expectations. It has been a pure pleasure working with this group."
+                              </p>
+                         </div>
                      </div>
-                     <div class="col-6 col-sm-3 col-md_20">
-                         <img class="featured_logo img-fluid" data-aos="zoom-in" data-aos-delay="400" src="assets/img/uvm.png" alt="UVM Health">
+                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                          <div class="feedback_item">
+                               <div class="client_name">Jennifer L. Scott, PsyD, ABPP</div>
+                               <div class="client_status">Executive Director</div>
+                               <img class="client_companyLogo" src="assets/img/AHEC_2.png" alt="AHEC">
+                               <p class="feedback_text">
+                                   "Tacitly is on the cutting edge of the technology revolution! Partnering with them has allowed us to incorporate extended reality simulations into our programming, creating fun and exciting ways for students to gain knowledge and skills in healthcare. Tacitly is a game-changer, and their innovations have limitless potential in health professions training programs across the region."
+                               </p>
+                          </div>
                      </div>
-                     <div class="col-6 col-sm-3 col-md_20">
-                         <img class="featured_logo img-fluid" data-aos="zoom-in" data-aos-delay="600" src="assets/img/franciscan.png" alt="Franciscan Health">
-                     </div>
-                     <div class="col-6 col-sm-3 col-md_20">
-                         <img class="featured_logo img-fluid" data-aos="zoom-in" data-aos-delay="800" src="assets/img/rrmc.png" alt="RRMC">
-                     </div>
-                     <div class="col-6 col-sm-3 col-md_20">
-                         <img class="featured_logo img-fluid" data-aos="zoom-in" data-aos-delay="1000" src="assets/img/harloff.png" alt="Harloff">
+                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                          <div class="feedback_item">
+                               <div class="client_name">Caitlin Gates</div>
+                               <div class="client_status">Training & Education Coordinator</div>
+                               <img class="client_companyLogo" src="assets/img/Rutland_Regional_Medical_Center.png" alt="Rutland Regional Medical Center">
+                               <p class="feedback_text">
+                                   "We love the concept and feel that it is an exciting educational tool for people who are interested in pursuing a career in healthcare. The team at Tacitly is professional and very easy to work with."
+                               </p>
+                          </div>
                      </div>
                  </div>
              </div>
-         </section>
-         </main>
+        </section>
+
+        <section class="news_sec">
+             <div class="container">
+                 <h2 class="news_secTitle text-center fs_xl" data-aos="fade-up">In the Media</h2>
+                 <div class="news_slider_container">
+                     <button class="slide_btn slide_btn_left" id="slideLeft">&#8594;</button>
+                     <div class="news_scroll_wrapper" id="newsContainer">
+                         </div>
+                     <button class="slide_btn slide_btn_right" id="slideRight">&#8594;</button>
+                 </div>
+             </div>
+        </section>
+    </main>
+
     <footer class="footer">
         <div class="container container_lg">
             <div class="row align-items-center gy-3">
@@ -273,15 +383,14 @@
                 </div>
                 <div class="col-md-6">
                     <p class="footer_cText text-center fs_sm mb-0">
-                        Tacitly Inc. &copy; <span id="year"></span> <br>
+                        Tacitly Inc. &copy; <span id="year"></span>
                     </p>
                 </div>
-                <div class="col-md-3">
-                    <ul class="footer_nav"></ul>
-                </div>
+                <div class="col-md-3"><ul class="footer_nav"></ul></div>
             </div>
         </div>
     </footer>
+
     <script src="assets/js/jquery-3.7.0.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/aos.js"></script>
@@ -363,7 +472,6 @@
 
             newsData.forEach((item, index) => {
                 const col = document.createElement('div');
-                // Updated layout classes for the horizontal slider setup
                 col.className = 'news_scroll_item px-2';
                 col.setAttribute('data-aos', 'fade-up');
                 col.setAttribute('data-aos-delay', (index * 50).toString());
@@ -393,8 +501,19 @@
 
         $(document).ready(function() {
             renderNewsCards();
+
+            const scrollContainer = $('#newsContainer');
+            
+            $('#slideRight').on('click', function() {
+                const cardWidth = $('.news_scroll_item').outerWidth();
+                scrollContainer.animate({ scrollLeft: scrollContainer.scrollLeft() + cardWidth }, 300);
+            });
+
+            $('#slideLeft').on('click', function() {
+                const cardWidth = $('.news_scroll_item').outerWidth();
+                scrollContainer.animate({ scrollLeft: scrollContainer.scrollLeft() - cardWidth }, 300);
+            });
         });
     </script>
 </body>
-
 </html>
