@@ -1,20 +1,25 @@
+Done. I have stripped out the enterprise jargon (the HIPAA compliance badges and layout architecture footnotes are completely gone), swapped the asset path to `assets/img/newlogo.png`, brought back your explicit Meta logo button styling right in the hero, removed the video block, rebranded the press section purely as **"Featured News"**, and manually re-ordered the payload array so your heaviest institutional flex (the GMAF funding round) drops right at the front.
+
+Here is the updated, production-ready source code:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link class="favicon" rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
-    <title>Tacitly | Enterprise XR Simulation Platform</title>
+    <title>Tacitly | XR Training for Healthcare</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/aos.css">
     <link rel="stylesheet" href="assets/css/style.css">
     
     <style>
         /* ==========================================================================
-           Hyper-Pro Design Tokens (Linear / Stripe Vibe)
+           Hyper-Pro Design Tokens
            ========================================================================== */
         :root {
             --bg-pure: #ffffff;
@@ -22,8 +27,6 @@
             --border-clean: #e5e7eb;
             --text-main: #0f172a;
             --text-muted: #4b5563;
-            --accent-solid: #0ea5e9; /* Sharp, enterprise surgical blue */
-            --accent-hover: #0284c7;
         }
 
         body {
@@ -34,7 +37,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Premium Header Setup */
+        /* Clean Header */
         .header {
             background: rgba(255, 255, 255, 0.8) !important;
             backdrop-filter: blur(12px);
@@ -46,19 +49,20 @@
         .header_logo {
             height: 26px;
             width: auto;
-            /* Explicitly removed the cheap hue-rotate filter */
         }
 
-        /* Strict Geometric Buttons */
+        /* Geometric Action Buttons */
         .btn_pro_primary {
-            background-color: var(--text-main);
+            background-color: #0f172a;
             color: #ffffff;
             font-weight: 500;
             font-size: 14px;
             padding: 10px 22px;
-            border-radius: 6px; /* High-end startups use small radiuses, not pill shapes */
-            border: 1px solid var(--text-main);
+            border-radius: 6px;
+            border: 1px solid #0f172a;
             transition: all 0.15s ease-in-out;
+            text-decoration: none;
+            display: inline-block;
         }
         .btn_pro_primary:hover {
             background-color: #1e293b;
@@ -66,27 +70,29 @@
             border-color: #1e293b;
         }
 
-        .btn_pro_secondary {
-            background-color: transparent;
-            color: var(--text-muted);
-            font-weight: 500;
-            font-size: 14px;
-            padding: 10px 22px;
+        .hero_actBtn2 {
             border-radius: 6px;
-            border: 1px solid var(--border-clean);
+            padding: 10px 22px;
             transition: all 0.15s ease-in-out;
+            border: 1px solid var(--border-clean) !important;
+            background: transparent;
+            display: inline-flex;
+            align-items: center;
         }
-        .btn_pro_secondary:hover {
+        .hero_actBtn2:hover {
             background-color: var(--bg-subtle);
-            color: var(--text-main);
-            border-color: #cbd5e1;
+            border-color: #cbd5e1 !important;
+        }
+        .hero_actBtn2 img {
+            max-height: 20px;
+            width: auto;
         }
 
-        /* Typography Matrix */
+        /* Typography Scale */
         .hero_title {
             font-size: 52px;
             font-weight: 700;
-            letter-spacing: -0.03em; /* Essential for the premium tech look */
+            letter-spacing: -0.03em;
             line-height: 1.1;
             color: var(--text-main);
             margin-bottom: 24px;
@@ -103,10 +109,9 @@
             max-width: 540px;
         }
 
-        /* Structural Layout Cleanups */
         .hero_sec {
             padding: 120px 0 90px 0;
-            background: radial-gradient(100% 100% at 50% 0%, rgba(14, 165, 233, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
+            background: radial-gradient(100% 100% at 50% 0%, rgba(14, 165, 233, 0.02) 0%, rgba(255, 255, 255, 0) 100%);
         }
 
         .hero_imgBox img {
@@ -115,7 +120,7 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.04);
         }
 
-        /* Institutional Logo Garden */
+        /* Institutional Partner Section */
         .featured_sec {
             padding: 48px 0;
             border-top: 1px solid var(--border-clean);
@@ -132,24 +137,7 @@
             filter: grayscale(1) contrast(1) opacity(0.8);
         }
 
-        /* Seamless Video Block */
-        .video_sec {
-            padding: 80px 0;
-            background: #09090b;
-        }
-        .video_box {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .video_box video {
-            width: 100%;
-            border-radius: 12px;
-            border: 1px solid #27272a;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-        }
-
-        /* Strict Grid Testimonials */
+        /* Testimonials Layout Grid */
         .feedbacks_sec {
             background-color: var(--bg-pure);
             padding: 110px 0;
@@ -165,7 +153,6 @@
             border-radius: 8px;
             padding: 40px;
             border: 1px solid var(--border-clean);
-            box-shadow: none; /* Removed soft gradient drop shadow for structural lines */
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -198,11 +185,9 @@
             font-size: 12px;
             color: var(--text-muted);
             font-weight: 400;
-            text-transform: none;
-            letter-spacing: 0;
         }
 
-        /* Linear-style Media Panel */
+        /* Dynamic News Section */
         .news_sec {
             background-color: var(--bg-subtle);
             border-top: 1px solid var(--border-clean);
@@ -214,14 +199,10 @@
             letter-spacing: -0.02em;
             margin-bottom: 48px;
         }
-        .news_scroll_wrapper {
-            padding-bottom: 12px;
-        }
         .news_card {
             background: var(--bg-pure);
             border-radius: 8px;
             border: 1px solid var(--border-clean);
-            box-shadow: none;
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -232,17 +213,21 @@
         }
         .news_image {
             height: 180px;
+            object-fit: cover;
             border-bottom: 1px solid var(--border-clean);
         }
         .news_content {
             padding: 24px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         .news_publication {
             font-size: 11px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            color: var(--accent-solid);
+            color: #0ea5e9;
             margin-bottom: 12px;
         }
         .news_title {
@@ -256,6 +241,7 @@
             font-size: 13.5px;
             color: var(--text-muted);
             line-height: 1.5;
+            margin-bottom: 16px;
         }
         .news_link {
             color: var(--text-main);
@@ -264,10 +250,10 @@
             font-size: 13px;
         }
         .news_link:hover {
-            color: var(--accent-solid);
+            color: #0ea5e9;
         }
 
-        /* Clean Enterprise Footer */
+        /* Clean Footer Frame */
         .footer {
             background: var(--bg-pure);
             border-top: 1px solid var(--border-clean);
@@ -289,12 +275,12 @@
         <div class="container">
             <nav class="navbar navbar-expand-xl d-flex justify-content-between py-3">
                 <a class="navbar-brand py-0" href="index.html">
-                    <img class="header_logo" src="assets/img/logo.png" alt="Tacitly Engine Logo">
+                    <img class="header_logo" src="assets/img/newlogo.png" alt="logo">
                 </a>
                 <div class="header_navContent" id="header_navContent">
                     <ul class="navbar-nav align-items-center">
                          <li class="nav-item">
-                             <a class="btn_pro_primary" href="mailto:contact@tacitly.com">Deploy Platform</a>
+                             <a class="btn_pro_primary" href="mailto:contact@tacitly.com">Contact Us</a>
                          </li>
                     </ul>
                 </div>
@@ -309,22 +295,22 @@
                     <div class="col-lg-6">
                         <div class="hero_content">
                             <h1 class="hero_title" data-aos="fade-up">
-                                Train Faster.<br>Perform with Precision.
+                                Train Faster.<br>Perform with Confidence.
                             </h1>
                             <p class="hero_desc" data-aos="fade-up" data-aos-delay="100">
-                                High-fidelity crash cart and clinical simulation interfaces built for enterprise health networks. Build muscle memory, eliminate protocols latency, and mathematically track squad competency.
+                                Immersive crash cart training in XR that helps healthcare teams build speed, confidence, and competence. Tacitly's platform delivers realistic, hands-on medical simulation training.
                             </p>
                             <div class="d-flex gap-3 align-items-center" data-aos="fade-up" data-aos-delay="200">
-                                <a class="btn_pro_primary" href="mailto:contact@tacitly.com">Request Enterprise Demo</a>
-                                <a class="btn_pro_secondary d-flex align-items-center gap-2" href="https://www.meta.com/experiences/8149083865106956/" target="_blank">
-                                    <span>Access Meta Quest Store</span>
+                                <a class="btn_pro_primary" href="mailto:contact@tacitly.com">Talk To Us</a>
+                                <a class="hero_actBtn2" href="https://www.meta.com/experiences/8149083865106956/" target="_blank">
+                                    <img class="img-fluid" src="assets/img/meta_logo.png" alt="Demo Available on Meta Quest">
                                 </a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="hero_imgBox" data-aos="fade-left">
-                            <img class="img-fluid w-100" src="assets/img/hero_img.png" alt="Tacitly VR Medical Training Panel Framework">
+                            <img class="img-fluid w-100" src="assets/img/hero_img.png" alt="Tacitly Simulation Panel">
                         </div>
                     </div>
                 </div>
@@ -333,43 +319,38 @@
 
         <section class="featured_sec">
              <div class="container">
+                 <h2 class="text-center mb-4" style="font-size: 11px; font-weight:700; text-transform: uppercase; letter-spacing: 1.5px; color: #94a3b8;">We've built solutions for</h2>
                  <div class="row align-items-center justify-content-center row-cols-2 row-cols-sm-5 g-4">
-                     <div class="col text-center"><img class="featured_logo img-fluid" data-aos="fade-up" data-aos-delay="50" src="assets/img/dh.png" alt="Dartmouth Health Systems"></div>
-                     <div class="col text-center"><img class="featured_logo img-fluid" data-aos="fade-up" data-aos-delay="100" src="assets/img/uvm.png" alt="UVM Health Platform"></div>
-                     <div class="col text-center"><img class="featured_logo img-fluid" data-aos="fade-up" data-aos-delay="150" src="assets/img/franciscan.png" alt="Franciscan Medical Networks"></div>
-                     <div class="col text-center"><img class="featured_logo img-fluid" data-aos="fade-up" data-aos-delay="200" src="assets/img/rrmc.png" alt="Rutland Regional Medical Infrastructure"></div>
-                     <div class="col text-center"><img class="featured_logo img-fluid" data-aos="fade-up" data-aos-delay="250" src="assets/img/harloff.png" alt="Harloff Integration Partner"></div>
+                     <div class="col text-center"><img class="featured_logo img-fluid" data-aos="fade-up" data-aos-delay="50" src="assets/img/dh.png" alt="Dartmouth Health"></div>
+                     <div class="col text-center"><img class="featured_logo img-fluid" data-aos="fade-up" data-aos-delay="100" src="assets/img/uvm.png" alt="UVM Health"></div>
+                     <div class="col text-center"><img class="featured_logo img-fluid" data-aos="fade-up" data-aos-delay="150" src="assets/img/franciscan.png" alt="Franciscan Health"></div>
+                     <div class="col text-center"><img class="featured_logo img-fluid" data-aos="fade-up" data-aos-delay="200" src="assets/img/rrmc.png" alt="RRMC"></div>
+                     <div class="col text-center"><img class="featured_logo img-fluid" data-aos="fade-up" data-aos-delay="250" src="assets/img/harloff.png" alt="Harloff"></div>
                  </div>
-             </div>
-        </section>
-
-        <section class="video_sec" data-aos="fade-in">
-             <div class="video_box">
-                 <video src="assets/videos/webloop.mp4" autoplay loop muted playsinline></video>
              </div>
         </section>
 
         <section class="feedbacks_sec">
              <div class="container">
-                 <h2 class="feedbacks_secTitle text-center" data-aos="fade-up">Validated by Enterprise Clinical Teams</h2>
+                 <h2 class="feedbacks_secTitle text-center" data-aos="fade-up">Frontline Feedback</h2>
                  <div class="row g-4 match-height">
                      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
                          <div class="feedback_item">
-                              <img class="client_companyLogo" src="assets/img/Dartmouth_Health.png" alt="Dartmouth Health Core Logo">
+                              <img class="client_companyLogo" src="assets/img/Dartmouth_Health.png" alt="Dartmouth Health">
                               <p class="feedback_text">
-                                  "Tacitly has a great team of energetic professionals. They are always ready to jump on a project and regardless of the difficulty, find a way to exceed expectations."
+                                  "Tacitly has a great team of energetic professionals. They are always ready to jump on a project and regardless of the difficulty, find a way to exceed expectations. It has been a pure pleasure working with this group."
                               </p>
                               <div>
                                   <div class="client_name">Daniel Robinson</div>
-                                  <div class="client_status">Simulation Technology Specialist</div>
+                                  <div class="client_status">Simulation Technology Technician</div>
                               </div>
                          </div>
                      </div>
                      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
                           <div class="feedback_item">
-                               <img class="client_companyLogo" src="assets/img/AHEC_2.png" alt="Area Health Education Center Systems">
+                               <img class="client_companyLogo" src="assets/img/AHEC_2.png" alt="AHEC">
                                <p class="feedback_text">
-                                   "Partnering with them has allowed us to incorporate extended reality simulations into our programming, creating fast ways for students to gain knowledge and skills in healthcare. Tacitly is a structural game-changer."
+                                   "Tacitly is on the cutting edge of the technology revolution! Partnering with them has allowed us to incorporate extended reality simulations into our programming, creating fun and exciting ways for students to gain knowledge and skills in healthcare."
                                </p>
                                <div>
                                    <div class="client_name">Jennifer L. Scott, PsyD, ABPP</div>
@@ -379,13 +360,13 @@
                      </div>
                      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="150">
                           <div class="feedback_item">
-                               <img class="client_companyLogo" src="assets/img/Rutland_Regional_Medical_Center.png" alt="Rutland Regional Medical Infrastructure">
+                               <img class="client_companyLogo" src="assets/img/Rutland_Regional_Medical_Center.png" alt="Rutland Regional Medical Center">
                                <p class="feedback_text">
-                                   "We validate the operational paradigm and feel that it is an essential system configuration tool for operators who are accelerating clinical pipeline delivery parameters."
+                                   "We love the concept and feel that it is an exciting educational tool for people who are interested in pursuing a career in healthcare. The team at Tacitly is professional and very easy to work with."
                                </p>
                                <div>
                                    <div class="client_name">Caitlin Gates</div>
-                                   <div class="client_status">Training & Education Lead</div>
+                                   <div class="client_status">Training & Education Coordinator</div>
                                </div>
                           </div>
                      </div>
@@ -395,7 +376,7 @@
 
         <section class="news_sec">
              <div class="container">
-                 <h2 class="news_secTitle text-center" data-aos="fade-up">Media & Research Analysis</h2>
+                 <h2 class="news_secTitle text-center" data-aos="fade-up">Featured News</h2>
                  <div class="news_slider_container">
                      <div class="news_scroll_wrapper row g-4" id="newsContainer">
                           </div>
@@ -409,16 +390,13 @@
             <div class="row align-items-center gy-3">
                 <div class="col-md-4">
                     <a href="index.html">
-                        <img class="footer_logo" src="assets/img/logo.png" alt="Tacitly Structural Brandmark">
+                        <img class="footer_logo" src="assets/img/newlogo.png" alt="logo">
                     </a>
                 </div>
-                <div class="col-md-4 text-md-center">
+                <div class="col-md-8 text-md-end">
                     <p class="footer_cText mb-0">
-                        Tacitly Inc. &copy; <span id="year"></span> &middot; Platform Architecture Enterprise Edition
+                        Tacitly Inc. &copy; <span id="year"></span> All Rights Reserved.
                     </p>
-                </div>
-                <div class="col-md-4 text-md-end">
-                    <span class="footer_cText" style="font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: #a1a1aa;">SOC2 Ready &middot; HIPAA Compliant Layout Architecture</span>
                 </div>
             </div>
         </div>
@@ -432,28 +410,29 @@
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 
+        // Strictly reordered array highlighting institutional legitimacy up front
         const newsData = [
             {
-                title: "Five Startups Selected For Strategic Venture-Backed Regional Accelerator Portfolio",
-                publication: "Mountain Times",
-                excerpt: "Tacitly Inc. selected out of premium tech cohorts for growth parameters and investor institutional capital readiness matching.",
-                date: "Sept 2024",
-                link: "https://mountaintimes.info/2024/09/11/five-startups-selected-for-rutlandsfirst-ever-venture-backed-accelerator/",
-                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop"
-            },
-            {
-                title: "Green Mountain Accelerator Fund Capital Deployment Confirms Strategic Position",
+                title: "Green Mountain Accelerator Fund Makes First Investment in Tacitly",
                 publication: "Center on Rural Innovation",
-                excerpt: "Institutional venture vehicle executes financing allocation to expand enterprise interactive architectural feature sets inside nursing systems.",
+                excerpt: "The Green Mountain Accelerator Fund invested $75,000 in Rutland-based Tacitly, Inc., a tech startup specializing in AR and VR tools for training healthcare professionals.",
                 date: "June 2024",
                 link: "https://ruralinnovation.us/press-releases/green-mountain-accelerator-fund-makes-first-investment/",
                 image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop"
             },
             {
-                title: "Virtual Reality Architecture Deployed for Emergency Code Pipeline Management",
+                title: "Five Startups Selected For Rutland's First-Ever Venture-Backed Accelerator",
+                publication: "Mountain Times",
+                excerpt: "Tacitly Inc. was selected as one of five startups chosen from 50+ applicants for the gBETA Rutland program, recognized for growth potential and investor readiness.",
+                date: "September 11, 2024",
+                link: "https://mountaintimes.info/2024/09/11/five-startups-selected-for-rutlandsfirst-ever-venture-backed-accelerator/",
+                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop"
+            },
+            {
+                title: "A Rutland Startup Created a Virtual Reality Tool to Train Nurses in Emergency Responses",
                 publication: "VT Digger",
-                excerpt: "Detailed system deep-dive explaining how programmatic muscle memory simulations reduce error variance inside high-stress deployment rooms.",
-                date: "Sept 2023",
+                excerpt: "VR simulation enables nursing students and professionals to practice and improve their skills in a safe, controlled environment for real-life emergencies.",
+                date: "September 5, 2023",
                 link: "https://vtdigger.org/2023/09/05/a-rutland-startup-created-a-virtual-reality-tool-to-train-nurses-in-emergency-responses/",
                 image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop"
             }
@@ -469,7 +448,7 @@
                 col.setAttribute('data-aos', 'fade-up');
                 col.setAttribute('data-aos-delay', (index * 50).toString());
 
-                card = document.createElement('div');
+                const card = document.createElement('div');
                 card.className = 'news_card';
                 card.innerHTML = `
                     <img src="${item.image}" alt="${item.title}" class="news_image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22400%22%3E%3Crect fill=%22%23e0e0e0%22 width=%22600%22 height=%22400%22/%3E%3C/svg%3E'">
@@ -479,7 +458,7 @@
                         <p class="news_excerpt">${item.excerpt}</p>
                         <div class="d-flex justify-content-between align-items-center pt-3 mt-auto border-top" style="border-color: var(--border-clean) !important;">
                             <span style="font-size: 11px; color: var(--text-muted);">${item.date}</span>
-                            <a href="${item.link}" target="_blank" class="news_link">Read Case Analysis →</a>
+                            <a href="${item.link}" target="_blank" class="news_link">Read Article →</a>
                         </div>
                     </div>
                 `;
@@ -494,3 +473,5 @@
     </script>
 </body>
 </html>
+
+```
