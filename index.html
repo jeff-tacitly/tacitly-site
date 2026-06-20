@@ -108,7 +108,7 @@
         }
 
         .hero_sec {
-            padding-top: 120px 0 90px 0;
+            padding: 120px 0 90px 0;
             background: radial-gradient(100% 100% at 50% 0%, rgba(55, 197, 220, 0.04) 0%, rgba(255, 255, 255, 0) 100%);
         }
 
@@ -282,11 +282,6 @@
         }
         .news_card:hover {
             border-color: #cbd5e1;
-        }
-        .news_image {
-            height: 180px;
-            object-fit: cover;
-            border-bottom: 1px solid var(--border-clean);
         }
         .news_content {
             padding: 24px;
@@ -481,71 +476,63 @@
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Complete sequence holding all 8 historical records cleanly
+        // High-legitimacy array keeping the text tracking intact
         const newsData = [
             {
                 title: "Five Startups Selected For Rutland's First-Ever Venture-Backed Accelerator",
                 publication: "Mountain Times",
                 excerpt: "Tacitly Inc. was selected as one of five startups chosen from 50+ applicants for the gBETA Rutland program, recognized for growth potential and investor readiness.",
                 date: "September 11, 2024",
-                link: "https://mountaintimes.info/2024/09/11/five-startups-selected-for-rutlandsfirst-ever-venture-backed-accelerator/",
-                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop"
+                link: "https://mountaintimes.info/2024/09/11/five-startups-selected-for-rutlandsfirst-ever-venture-backed-accelerator/"
             },
             {
                 title: "Green Mountain Accelerator Fund Makes First Investment in Tacitly",
                 publication: "Center on Rural Innovation",
                 excerpt: "The Green Mountain Accelerator Fund invested $75,000 in Rutland-based Tacitly, Inc., a tech startup specializing in AR and VR tools for training healthcare professionals.",
                 date: "June 2024",
-                link: "https://ruralinnovation.us/press-releases/green-mountain-accelerator-fund-makes-first-investment/",
-                image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop"
+                link: "https://ruralinnovation.us/press-releases/green-mountain-accelerator-fund-makes-first-investment/"
             },
             {
                 title: "Tacitly, a StartUp Rutland Incubator Company Posts Big Progress",
                 publication: "Rutland Vermont",
                 excerpt: "Tacitly achieved milestones including LaunchVT cohort selection, a $5,000 AHEC grant, and first beta tests with 50+ nursing students at UVM and Castleton University.",
                 date: "2024",
-                link: "https://rutlandvermont.com/tacitly-a-startup-rutland-incubator-company-posts-big-progress/",
-                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop"
+                link: "https://rutlandvermont.com/tacitly-a-startup-rutland-incubator-company-posts-big-progress/"
             },
             {
                 title: "A Rutland Startup Created a Virtual Reality Tool to Train Nurses in Emergency Responses",
                 publication: "VT Digger",
                 excerpt: "VR simulation enables nursing students and professionals to practice and improve their skills in a safe, controlled environment for real-life emergencies.",
                 date: "September 5, 2023",
-                link: "https://vtdigger.org/2023/09/05/a-rutland-startup-created-a-virtual-reality-tool-to-train-nurses-in-emergency-responses/",
-                image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop"
+                link: "https://vtdigger.org/2023/09/05/a-rutland-startup-created-a-virtual-reality-tool-to-train-nurses-in-emergency-responses/"
             },
             {
                 title: "Chawla Comments to VTDigger on VR 'Crash Cart' Training Tool",
                 publication: "UVM Larner College of Medicine",
                 excerpt: "Raj Chawla, faculty technology liaison at Larner, discussed innovative VR crash cart technology for emergency response training.",
                 date: "September 2023",
-                link: "https://www.uvm.edu/larnermed/news/chawla-comments-vtdigger-vr-crash-cart-training-tool",
-                image: "https://images.unsplash.com/photo-1576091160500-112b8f30cb81?w=600&h=400&fit=crop"
+                link: "https://www.uvm.edu/larnermed/news/chawla-comments-vtdigger-vr-crash-cart-training-tool"
             },
             {
                 title: "Partnership Tests VT Virtual Tech Trains Future Nurses",
                 publication: "WCAX",
                 excerpt: "The University of Vermont and Castleton University have partnered using VR technology to help train future nurses through virtual simulations and clinical scenarios.",
                 date: "May 18, 2023",
-                link: "https://www.wcax.com/2023/05/18/partnership-tests-vt-virtual-tech-trains-future-nurses/",
-                image: "https://images.unsplash.com/photo-1579154204601-01d3f2d751d0?w=600&h=400&fit=crop"
+                link: "https://www.wcax.com/2023/05/18/partnership-tests-vt-virtual-tech-trains-future-nurses/"
             },
             {
                 title: "LaunchVT Announces 2023 Accelerator Cohort",
                 publication: "Vermont Biz",
                 excerpt: "LaunchVT's 2023 cohort includes eight Vermont startups paired with dedicated business coaches for a twelve-week intensive accelerator program.",
                 date: "April 2023",
-                link: "https://vermontbiz.com/news/2023/april/12/launchvt-announces-2023-accelerator-cohort",
-                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop"
+                link: "https://vermontbiz.com/news/2023/april/12/launchvt-announces-2023-accelerator-cohort"
             },
             {
                 title: "Southern Vermont AHEC Sponsors Tacitly's Innovative Work",
                 publication: "Southern Vermont AHEC",
                 excerpt: "Southern Vermont AHEC is thrilled to sponsor Tacitly's innovative work and be part of this groundbreaking initiative in healthcare training.",
                 date: "2023",
-                link: "https://www.facebook.com/svahec/posts/690107573125844/",
-                image: "https://images.unsplash.com/photo-1576091160625-4dbb5c16e0ae?w=600&h=400&fit=crop"
+                link: "https://www.facebook.com/svahec/posts/690107573125844/"
             }
         ];
 
@@ -562,7 +549,6 @@
                 const card = document.createElement('div');
                 card.className = 'news_card';
                 card.innerHTML = `
-                    <img src="${item.image}" alt="${item.title}" class="news_image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22400%22%3E%3Crect fill=%22%23e0e0e0%22 width=%22600%22 height=%22400%22/%3E%3C/svg%3E'">
                     <div class="news_content">
                         <div class="news_publication">${item.publication}</div>
                         <h3 class="news_title">${item.title}</h3>
