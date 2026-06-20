@@ -135,25 +135,6 @@
             filter: grayscale(1) contrast(1) opacity(0.8);
         }
 
-        /* Cinematic Video Frame Section */
-        .video_sec {
-            background-color: #000000;
-            padding: 60px 0;
-            display: flex;
-            justify-content: center;
-        }
-        .video_box {
-            width: 100%;
-            max-width: 1140px;
-            padding: 0 15px;
-        }
-        .video_box video {
-            width: 100%;
-            height: auto;
-            border-radius: 4px;
-            display: block;
-        }
-
         /* Testimonials Layout Grid */
         .feedbacks_sec {
             background-color: var(--bg-pure);
@@ -252,13 +233,13 @@
         @media (min-width: 768px) {
             .news_scroll_item {
                 flex: 0 0 50%;
-				max-width: 50%;
+                max-width: 50%;
             }
         }
         @media (min-width: 992px) {
             .news_scroll_item {
                 flex: 0 0 33.333333%;
-				max-width: 33.333333%;
+                max-width: 33.333333%;
             }
         }
         .slide_btn {
@@ -420,12 +401,6 @@
              </div>
         </section>
 
-        <section class="video_sec" data-aos="fade-in">
-             <div class="video_box">
-                 <video src="assets/videos/webloop.mp4" autoplay loop muted playsinline></video>
-             </div>
-        </section>
-
         <section class="feedbacks_sec">
              <div class="container">
                  <h2 class="feedbacks_secTitle text-center" data-aos="fade-up">Frontline Feedback: Medical Simulation Training</h2>
@@ -506,7 +481,7 @@
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // High-legitimacy chronological array compilation holding all 8 historical records
+        // Complete sequence holding all 8 historical records cleanly
         const newsData = [
             {
                 title: "Five Startups Selected For Rutland's First-Ever Venture-Backed Accelerator",
@@ -625,5 +600,3 @@
     </script>
 </body>
 </html>
-
-```
