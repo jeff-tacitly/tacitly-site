@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link class="favicon" rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <title>Tacitly | XR Training for Healthcare</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/aos.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <style>
+        /* ==========================================================================
+           Hyper-Pro Design Tokens & Custom Font Compilation
+           ========================================================================== */
+        @font-face {
+            font-family: 'EarthOrbiter';
+            src: url('assets/earthorbiter.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            --bg-pure: #ffffff;
+            --bg-subtle: #fafafa;
+            --border-clean: #e5e7eb;
+            --text-main: #0f172a;
+            --text-muted: #4b5563;
+            --accent-blue: #37c5dc;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-pure);
+            color: var(--text-main);
+            letter-spacing: -0.01em;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* High-End Typography Brandmark */
+        .brand_text {
+            font-family: 'EarthOrbiter', sans-serif;
+            color: var(--text-main);
+            font-size: 22px;
+            font-weight: normal;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+            line-height: 1;
+        }
+        a.brand_text:hover {
+            color: var(--text-main);
+            opacity: 0.85;
+        }
+
+        /* Clean Header */
+        .header {
+            background: rgba(255, 255, 255, 0.8) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-clean);
+            transition: all 0.2s ease;
+        }
+
+        /* Geometric Action Buttons */
+        .btn_pro_primary {
+            background-color: #0f172a;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 14px;
+            padding: 10px 24px;
+            border-radius: 6px;
+            border: 1px solid #0f172a;
+            transition: all 0.15s ease-in-out;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn_pro_primary:hover {
+            background-color: #1e293b;
+            color: #ffffff;
+            border-color: #1e293b;
+        }
+
+        /* Typography Scale */
+        .hero_title {
+            font-size: 52px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            color: var(--text-main);
+            margin-bottom: 24px;
+        }
+        @media (max-width: 991px) {
+            .hero_title { font-size: 40px; }
+        }
+
+        .hero_desc {
+            font-size: 18px;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            max-width: 540px;
+        }
+
+        .hero_sec {
+            padding: 120px 0 90px 0;
+            background: radial-gradient(100% 100% at 50% 0%, rgba(55, 197, 220, 0.04) 0%, rgba(255, 255, 255, 0) 100%);
+        }
+
+        .hero_imgBox img {
+            border-radius: 0;
+            border: none;
+            box-shadow: none;
+        }
+
+        /* Institutional Partner Section */
+        .featured_sec {
+            padding: 48px 0;
+            border-top: 1px solid var(--border-clean);
+            border-bottom: 1px solid var(--border-clean);
+            background: var(--bg-subtle);
+        }
+        .featured_logo {
+            max-height: 32px !important;
+            object-fit: contain;
+            filter: grayscale(1) contrast(0.9) opacity(0.5);
+            transition: filter 0.2s ease;
+        }
+        .featured_logo:hover {
+            filter: grayscale(1) contrast(1) opacity(0.8);
+        }
+
+        /* Cinematic Video Frame Section */
+        .video_sec {
+            background-color: #000000;
+            padding: 60px 0;
+            display: flex;
+            justify-content: center;
+        }
+        .video_box {
+            width: 100%;
+            max-width: 1140px;
+            padding: 0 15px;
+        }
+        .video_box video {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            display: block;
+        }
+
+        /* Testimonials Layout Grid */
+        .feedbacks_sec {
+            background-color: var(--bg-pure);
+            padding: 110px 0;
+        }
+        .feedbacks_secTitle {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 64px;
+        }
+        .feedback_item {
+            background: var(--bg-pure);
+            border-radius: 8px;
+            padding: 40px;
+            border: 1px solid var(--border-clean);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.2s ease;
+        }
+        .feedback_item:hover {
+            border-color: #9ca3af;
+        }
+        .client_companyLogo {
+            max-height: 28px;
+            width: auto;
+            object-fit: contain;
+            filter: grayscale(1) opacity(0.7);
+            margin-bottom: 28px;
+            display: block;
+        }
+        .feedback_text {
+            font-size: 15px;
+            color: #334155;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            flex-grow: 1;
+            font-style: italic;
+        }
+        .client_name {
+            font-weight: 600;
+            color: var(--text-main);
+            font-size: 15px;
+        }
+        .client_status {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Dynamic Horizontal Slider News Section Setup */
+        .news_sec {
+            background-color: var(--bg-subtle);
+            border-top: 1px solid var(--border-clean);
+            padding: 110px 0;
+        }
+        .news_secTitle {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 48px;
+        }
+        .news_slider_container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .news_scroll_wrapper {
+            overflow-x: auto;
+            overflow-y: hidden;
+            display: flex;
+            flex-wrap: nowrap;
+            padding: 10px 0 20px 0;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            width: 100%;
+        }
+        .news_scroll_wrapper::-webkit-scrollbar {
+            height: 6px;
+        }
+        .news_scroll_wrapper::-webkit-scrollbar-track {
+            background: var(--border-clean);
+            border-radius: 10px;
+        }
+        .news_scroll_wrapper::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        .news_scroll_item {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+        @media (min-width: 768px) {
+            .news_scroll_item {
+                flex: 0 0 50%;
+				max-width: 50%;
+            }
+        }
+        @media (min-width: 992px) {
+            .news_scroll_item {
+                flex: 0 0 33.333333%;
+				max-width: 33.333333%;
+            }
+        }
+        .slide_btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            background: var(--bg-pure);
+            border: 1px solid var(--border-clean);
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            z-index: 10;
+            transition: all 0.15s ease;
+            font-size: 14px;
+            color: var(--text-main);
+        }
+        .slide_btn:hover {
+            background: #0f172a;
+            color: #ffffff;
+            border-color: #0f172a;
+        }
+        .slide_btn_left { left: -22px; }
+        .slide_btn_right { right: -22px; }
+        @media (min-width: 1200px) {
+            .slide_btn { display: flex; }
+        }
+        .news_card {
+            background: var(--bg-pure);
+            border-radius: 8px;
+            border: 1px solid var(--border-clean);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.2s ease;
+        }
+        .news_card:hover {
+            border-color: #cbd5e1;
+        }
+        .news_image {
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-clean);
+        }
+        .news_content {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .news_publication {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-blue);
+            margin-bottom: 12px;
+        }
+        .news_title {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--text-main);
+            margin-bottom: 8px;
+            flex-grow: 1;
+        }
+        .news_excerpt {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 16px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .news_link {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 13px;
+        }
+        .news_link:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Clean Footer Frame */
+        .footer {
+            background: var(--bg-pure);
+            border-top: 1px solid var(--border-clean);
+            padding: 48px 0;
+        }
+        .footer_cText {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header sticky-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-xl d-flex justify-content-between py-3">
+                <a class="brand_text" href="index.html">TACITLY</a>
+                <div class="header_navContent" id="header_navContent">
+                    <ul class="navbar-nav align-items-center">
+                         <li class="nav-item">
+                             <a class="btn_pro_primary" href="mailto:contact@tacitly.com">Contact</a>
+                         </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="hero_sec">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6">
+                        <div class="hero_content">
+                            <h1 class="hero_title" data-aos="fade-up">
+                                Train Faster. Perform with Confidence.
+                            </h1>
+                            <p class="hero_desc" data-aos="fade-up" data-aos-delay="100">
+                                Immersive crash cart training in XR that helps healthcare teams build speed, confidence, and competence. Tacitly's platform delivers realistic, hands-on medical simulation training.
+                            </p>
+                            <div class="d-flex gap-3 align-items-center" data-aos="fade-up" data-aos-delay="200">
+                                <a class="btn_pro_primary" href="mailto:contact@tacitly.com">Talk To Us</a>
+                                <a class="btn btn-outline-dark border rounded-3 px-3 py-2" href="https://www.meta.com/experiences/8149083865106956/" target="_blank" style="font-size: 13px; font-weight: 500;">
+                                    View on Meta Quest
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="hero_imgBox" data-aos="fade-left">
+                            <img class="img-fluid w-100" src="assets/img/hero_img.png" alt="Tacitly XR Simulation Interface">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured_sec">
+             <div class="container">
+                 <h2 class="text-center mb-4" style="font-size: 11px; font-weight:700; text-transform: uppercase; letter-spacing: 1.5px; color: #94a3b8;">We've built solutions for</h2>
+                 <div class="row align-items-center justify-content-center row-cols-2 row-cols-sm-5 g-4">
+                     <div class="col text-center"><img class="featured_logo img-fluid" data-aos="fade-up" data-aos-delay="50" src="assets/img/dh.png" alt="Dartmouth Health"></div>
+                     <div class="col text-center"><img class="featured_logo img-fluid" data-aos="fade-up" data-aos-delay="100" src="assets/img/uvm.png" alt="UVM Health"></div>
+                     <div class="col text-center"><img class="featured_logo img-fluid" data-aos="fade-up" data-aos-delay="150" src="assets/img/franciscan.png" alt="Franciscan Health"></div>
+                     <div class="col text-center"><img class="featured_logo img-fluid" data-aos="fade-up" data-aos-delay="200" src="assets/img/rrmc.png" alt="RRMC"></div>
+                     <div class="col text-center"><img class="featured_logo img-fluid" data-aos="fade-up" data-aos-delay="250" src="assets/img/harloff.png" alt="Harloff Manufacturing"></div>
+                 </div>
+             </div>
+        </section>
+
+        <section class="video_sec" data-aos="fade-in">
+             <div class="video_box">
+                 <video src="assets/videos/webloop.mp4" autoplay loop muted playsinline></video>
+             </div>
+        </section>
+
+        <section class="feedbacks_sec">
+             <div class="container">
+                 <h2 class="feedbacks_secTitle text-center" data-aos="fade-up">Frontline Feedback: Medical Simulation Training</h2>
+                 <div class="row g-4 match-height">
+                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+                         <div class="feedback_item">
+                              <img class="client_companyLogo" src="assets/img/Dartmouth_Health.png" alt="Dartmouth Health">
+                              <p class="feedback_text">
+                                  "Tacitly has a great team of energetic professionals. They are always ready to jump on a project and regardless of the difficulty, find a way to exceed expectations. It has been a pure pleasure working with this group."
+                              </p>
+                              <div>
+                                  <div class="client_name">Daniel Robinson</div>
+                                  <div class="client_status">Simulation Technology Technician</div>
+                              </div>
+                         </div>
+                     </div>
+                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                          <div class="feedback_item">
+                               <img class="client_companyLogo" src="assets/img/AHEC_2.png" alt="AHEC">
+                               <p class="feedback_text">
+                                   "Tacitly is on the cutting edge of the technology revolution! Partnering with them has allowed us to incorporate extended reality simulations into our programming, creating fun and exciting ways for students to gain knowledge and skills in healthcare. Tacitly is a game-changer, and their innovations have limitless potential in health professions training programs across the region."
+                               </p>
+                               <div>
+                                   <div class="client_name">Jennifer L. Scott, PsyD, ABPP</div>
+                                   <div class="client_status">Executive Director</div>
+                               </div>
+                          </div>
+                     </div>
+                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="150">
+                          <div class="feedback_item">
+                               <img class="client_companyLogo" src="assets/img/Rutland_Regional_Medical_Center.png" alt="Rutland Regional Medical Center">
+                               <p class="feedback_text">
+                                   "We love the concept and feel that it is an exciting educational tool for people who are interested in pursuing a career in healthcare. The team at Tacitly is professional and very easy to work with."
+                               </p>
+                               <div>
+                                   <div class="client_name">Caitlin Gates</div>
+                                   <div class="client_status">Training & Education Coordinator</div>
+                               </div>
+                          </div>
+                     </div>
+                 </div>
+             </div>
+        </section>
+
+        <section class="news_sec">
+             <div class="container">
+                 <h2 class="news_secTitle text-center" data-aos="fade-up">In the Media</h2>
+                 <div class="news_slider_container">
+                     <button class="slide_btn slide_btn_left" id="slideLeft">&#8592;</button>
+                     <div class="news_scroll_wrapper" id="newsContainer">
+                          </div>
+                     <button class="slide_btn slide_btn_right" id="slideRight">&#8594;</button>
+                 </div>
+             </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row align-items-center gy-3">
+                <div class="col-md-4">
+                    <span class="brand_text">TACITLY</span>
+                </div>
+                <div class="col-md-8 text-md-end">
+                    <p class="footer_cText mb-0">
+                        Tacitly Inc. &copy; <span id="year"></span> All Rights Reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/jquery-3.7.0.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/aos.js"></script>
+    <script src="assets/js/script.js"></script>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // High-legitimacy chronological array compilation holding all 8 historical records
+        const newsData = [
+            {
+                title: "Five Startups Selected For Rutland's First-Ever Venture-Backed Accelerator",
+                publication: "Mountain Times",
+                excerpt: "Tacitly Inc. was selected as one of five startups chosen from 50+ applicants for the gBETA Rutland program, recognized for growth potential and investor readiness.",
+                date: "September 11, 2024",
+                link: "https://mountaintimes.info/2024/09/11/five-startups-selected-for-rutlandsfirst-ever-venture-backed-accelerator/",
+                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop"
+            },
+            {
+                title: "Green Mountain Accelerator Fund Makes First Investment in Tacitly",
+                publication: "Center on Rural Innovation",
+                excerpt: "The Green Mountain Accelerator Fund invested $75,000 in Rutland-based Tacitly, Inc., a tech startup specializing in AR and VR tools for training healthcare professionals.",
+                date: "June 2024",
+                link: "https://ruralinnovation.us/press-releases/green-mountain-accelerator-fund-makes-first-investment/",
+                image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop"
+            },
+            {
+                title: "Tacitly, a StartUp Rutland Incubator Company Posts Big Progress",
+                publication: "Rutland Vermont",
+                excerpt: "Tacitly achieved milestones including LaunchVT cohort selection, a $5,000 AHEC grant, and first beta tests with 50+ nursing students at UVM and Castleton University.",
+                date: "2024",
+                link: "https://rutlandvermont.com/tacitly-a-startup-rutland-incubator-company-posts-big-progress/",
+                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop"
+            },
+            {
+                title: "A Rutland Startup Created a Virtual Reality Tool to Train Nurses in Emergency Responses",
+                publication: "VT Digger",
+                excerpt: "VR simulation enables nursing students and professionals to practice and improve their skills in a safe, controlled environment for real-life emergencies.",
+                date: "September 5, 2023",
+                link: "https://vtdigger.org/2023/09/05/a-rutland-startup-created-a-virtual-reality-tool-to-train-nurses-in-emergency-responses/",
+                image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop"
+            },
+            {
+                title: "Chawla Comments to VTDigger on VR 'Crash Cart' Training Tool",
+                publication: "UVM Larner College of Medicine",
+                excerpt: "Raj Chawla, faculty technology liaison at Larner, discussed innovative VR crash cart technology for emergency response training.",
+                date: "September 2023",
+                link: "https://www.uvm.edu/larnermed/news/chawla-comments-vtdigger-vr-crash-cart-training-tool",
+                image: "https://images.unsplash.com/photo-1576091160500-112b8f30cb81?w=600&h=400&fit=crop"
+            },
+            {
+                title: "Partnership Tests VT Virtual Tech Trains Future Nurses",
+                publication: "WCAX",
+                excerpt: "The University of Vermont and Castleton University have partnered using VR technology to help train future nurses through virtual simulations and clinical scenarios.",
+                date: "May 18, 2023",
+                link: "https://www.wcax.com/2023/05/18/partnership-tests-vt-virtual-tech-trains-future-nurses/",
+                image: "https://images.unsplash.com/photo-1579154204601-01d3f2d751d0?w=600&h=400&fit=crop"
+            },
+            {
+                title: "LaunchVT Announces 2023 Accelerator Cohort",
+                publication: "Vermont Biz",
+                excerpt: "LaunchVT's 2023 cohort includes eight Vermont startups paired with dedicated business coaches for a twelve-week intensive accelerator program.",
+                date: "April 2023",
+                link: "https://vermontbiz.com/news/2023/april/12/launchvt-announces-2023-accelerator-cohort",
+                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop"
+            },
+            {
+                title: "Southern Vermont AHEC Sponsors Tacitly's Innovative Work",
+                publication: "Southern Vermont AHEC",
+                excerpt: "Southern Vermont AHEC is thrilled to sponsor Tacitly's innovative work and be part of this groundbreaking initiative in healthcare training.",
+                date: "2023",
+                link: "https://www.facebook.com/svahec/posts/690107573125844/",
+                image: "https://images.unsplash.com/photo-1576091160625-4dbb5c16e0ae?w=600&h=400&fit=crop"
+            }
+        ];
+
+        function renderNewsCards() {
+            const container = document.getElementById('newsContainer');
+            container.innerHTML = '';
+
+            newsData.forEach((item, index) => {
+                const col = document.createElement('div');
+                col.className = 'news_scroll_item px-2';
+                col.setAttribute('data-aos', 'fade-up');
+                col.setAttribute('data-aos-delay', (index * 50).toString());
+
+                const card = document.createElement('div');
+                card.className = 'news_card';
+                card.innerHTML = `
+                    <img src="${item.image}" alt="${item.title}" class="news_image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22400%22%3E%3Crect fill=%22%23e0e0e0%22 width=%22600%22 height=%22400%22/%3E%3C/svg%3E'">
+                    <div class="news_content">
+                        <div class="news_publication">${item.publication}</div>
+                        <h3 class="news_title">${item.title}</h3>
+                        <p class="news_excerpt">${item.excerpt}</p>
+                        <div class="d-flex justify-content-between align-items-center pt-3 mt-auto border-top" style="border-color: var(--border-clean) !important;">
+                            <span style="font-size: 11px; color: var(--text-muted);">${item.date}</span>
+                            <a href="${item.link}" target="_blank" class="news_link">Read Article →</a>
+                        </div>
+                    </div>
+                `;
+                col.appendChild(card);
+                container.appendChild(col);
+            });
+
+            if (typeof AOS !== 'undefined') {
+                AOS.refresh();
+            }
+        }
+
+        $(document).ready(function() {
+            renderNewsCards();
+
+            const scrollContainer = $('#newsContainer');
+            
+            $('#slideRight').on('click', function() {
+                const cardWidth = $('.news_scroll_item').outerWidth();
+                scrollContainer.animate({ scrollLeft: scrollContainer.scrollLeft() + cardWidth }, 300);
+            });
+
+            $('#slideLeft').on('click', function() {
+                const cardWidth = $('.news_scroll_item').outerWidth();
+                scrollContainer.animate({ scrollLeft: scrollContainer.scrollLeft() - cardWidth }, 300);
+            });
+        });
+    </script>
+</body>
+</html>
+
+```
