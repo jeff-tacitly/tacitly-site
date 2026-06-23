@@ -555,7 +555,7 @@
         const container = document.getElementById('newsContainer');
         container.innerHTML = '';
 
-        // Render original set of items
+        // Stripped out data-aos attributes completely to avoid CSS transition conflicts
         newsData.forEach((item) => {
             const col = document.createElement('div');
             col.className = 'news_scroll_item original_item px-2';
@@ -563,17 +563,12 @@
             container.appendChild(col);
         });
 
-        // Clone the entire set and append to the end for seamless infinite loop text matching
         newsData.forEach((item) => {
             const col = document.createElement('div');
             col.className = 'news_scroll_item cloned_item px-2';
             col.innerHTML = createCardMarkup(item);
             container.appendChild(col);
         });
-
-        if (typeof AOS !== 'undefined') {
-            AOS.refresh();
-        }
     }
 
     $(document).ready(function() {
@@ -582,38 +577,38 @@
         const scrollContainer = document.getElementById('newsContainer');
         let isHovered = false;
         let currentScroll = 0;
-        const scrollSpeed = 0.6; // Adjust this number to make it faster or slower
+        const pixelsPerSecond = 35; // Fine-tune speed easily right here
+        let lastTime = null;
 
-        // Track hover state
-        scrollContainer.addEventListener('mouseenter', () => {
-            isHovered = true;
-        });
-
+        scrollContainer.addEventListener('mouseenter', () => isHovered = true);
         scrollContainer.addEventListener('mouseleave', () => {
             isHovered = false;
-            // Sync current position back to track state if user manually scrolled during pause
             currentScroll = scrollContainer.scrollLeft;
+            lastTime = null; // Reset anchor point for smooth takeover
         });
 
-        // Fallback sync if user physically drags scrollbar
+        // Sync track state if manually dragged or swiped
         scrollContainer.addEventListener('scroll', () => {
             if (isHovered) {
                 currentScroll = scrollContainer.scrollLeft;
             }
         });
 
-        function autoScroll() {
+        function autoScroll(timestamp) {
+            if (!lastTime) lastTime = timestamp;
+            const deltaTime = (timestamp - lastTime) / 1000;
+            lastTime = timestamp;
+
             if (!isHovered) {
-                currentScroll += scrollSpeed;
+                currentScroll += pixelsPerSecond * deltaTime;
                 
-                // Calculate total scroll width of just the original non-cloned nodes
                 const originalItems = scrollContainer.querySelectorAll('.original_item');
                 let totalOriginalWidth = 0;
                 originalItems.forEach(item => {
                     totalOriginalWidth += item.offsetWidth;
                 });
 
-                // When we have fully scrolled past the original set, loop back silently
+                // Hard loop reset point
                 if (currentScroll >= totalOriginalWidth) {
                     currentScroll = 0;
                 }
@@ -623,10 +618,10 @@
             requestAnimationFrame(autoScroll);
         }
 
-        // Initialize animation loop
+        // Kick off loop immediately on load
         requestAnimationFrame(autoScroll);
 
-        // Retain original side buttons click functionality safely paired with the tracker loop
+        // Arrow button click handling synced to frame coordinates
         $('#slideRight').on('click', function() {
             const cardWidth = $('.news_scroll_item').outerWidth();
             currentScroll += cardWidth;
