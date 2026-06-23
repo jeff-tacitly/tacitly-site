@@ -555,7 +555,6 @@
         const container = document.getElementById('newsContainer');
         container.innerHTML = '';
 
-        // Stripped out data-aos attributes completely to avoid CSS transition conflicts
         newsData.forEach((item) => {
             const col = document.createElement('div');
             col.className = 'news_scroll_item original_item px-2';
@@ -571,23 +570,40 @@
         });
     }
 
-    $(document).ready(function() {
-        renderNewsCards();
+    // Force rendering to happen immediately during parsing
+    renderNewsCards();
 
+    // Use window.onload to ensure ALL css layout engines have finished drawing card dimensions
+    window.onload = function() {
         const scrollContainer = document.getElementById('newsContainer');
         let isHovered = false;
         let currentScroll = 0;
-        const pixelsPerSecond = 35; // Fine-tune speed easily right here
+        const pixelsPerSecond = 35; 
         let lastTime = null;
+        let totalOriginalWidth = 0;
+
+        // Calculate track length safely
+        function calculateWidths() {
+            const originalItems = scrollContainer.querySelectorAll('.original_item');
+            totalOriginalWidth = 0;
+            originalItems.forEach(item => {
+                totalOriginalWidth += item.getBoundingClientRect().width;
+            });
+        }
+        
+        // Run calculation once layouts are locked
+        calculateWidths();
+
+        // Re-calculate math if window sizes shift to protect layout widths
+        window.addEventListener('resize', calculateWidths);
 
         scrollContainer.addEventListener('mouseenter', () => isHovered = true);
         scrollContainer.addEventListener('mouseleave', () => {
             isHovered = false;
             currentScroll = scrollContainer.scrollLeft;
-            lastTime = null; // Reset anchor point for smooth takeover
+            lastTime = null; 
         });
 
-        // Sync track state if manually dragged or swiped
         scrollContainer.addEventListener('scroll', () => {
             if (isHovered) {
                 currentScroll = scrollContainer.scrollLeft;
@@ -599,16 +615,9 @@
             const deltaTime = (timestamp - lastTime) / 1000;
             lastTime = timestamp;
 
-            if (!isHovered) {
+            if (!isHovered && totalOriginalWidth > 0) {
                 currentScroll += pixelsPerSecond * deltaTime;
                 
-                const originalItems = scrollContainer.querySelectorAll('.original_item');
-                let totalOriginalWidth = 0;
-                originalItems.forEach(item => {
-                    totalOriginalWidth += item.offsetWidth;
-                });
-
-                // Hard loop reset point
                 if (currentScroll >= totalOriginalWidth) {
                     currentScroll = 0;
                 }
@@ -618,10 +627,9 @@
             requestAnimationFrame(autoScroll);
         }
 
-        // Kick off loop immediately on load
         requestAnimationFrame(autoScroll);
 
-        // Arrow button click handling synced to frame coordinates
+        // Arrow controls tracking variables correctly
         $('#slideRight').on('click', function() {
             const cardWidth = $('.news_scroll_item').outerWidth();
             currentScroll += cardWidth;
@@ -634,7 +642,7 @@
             if (currentScroll < 0) currentScroll = 0;
             scrollContainer.scrollLeft = currentScroll;
         });
-    });
+    };
 </script>
 </body>
 </html>
