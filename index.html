@@ -7,7 +7,7 @@
     <link class="favicon" rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
-    <title>Tacitly | XR Training for Healthcare</title>
+    <title>Code Blue: Surgical & ER Crash Cart | XR Training for Healthcare</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/aos.css">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -108,7 +108,7 @@
         }
 
         .hero_sec {
-            padding-top: 20px;
+            padding: 120px 0 90px 0;
             background: radial-gradient(100% 100% at 50% 0%, rgba(55, 197, 220, 0.04) 0%, rgba(255, 255, 255, 0) 100%);
         }
 
@@ -204,6 +204,7 @@
             position: relative;
             display: flex;
             align-items: center;
+            overflow: hidden; /* Force strict containment boundary */
         }
         .news_scroll_wrapper {
             overflow-x: auto;
@@ -211,9 +212,10 @@
             display: flex;
             flex-wrap: nowrap;
             padding: 10px 0 20px 0;
-            scroll-behavior: smooth;
+            scroll-behavior: auto !important; /* Block CSS from fighting JS transitions during resets */
             -webkit-overflow-scrolling: touch;
             width: 100%;
+            will-change: scroll-position;
         }
         .news_scroll_wrapper::-webkit-scrollbar {
             height: 6px;
@@ -226,9 +228,12 @@
             background: #cbd5e1;
             border-radius: 10px;
         }
+        
         .news_scroll_item {
             flex: 0 0 100%;
             max-width: 100%;
+            transform: none !important; /* Stop inherited global style.css animations */
+            transition: none !important;
         }
         @media (min-width: 768px) {
             .news_scroll_item {
@@ -364,7 +369,7 @@
                                 Train Faster. Perform with Confidence.
                             </h1>
                             <p class="hero_desc" data-aos="fade-up" data-aos-delay="100">
-                                Immersive crash cart training in XR that helps healthcare teams build speed, confidence, and competence. Tacitly's platform delivers realistic, hands-on medical simulation training.
+                                Immersive crash cart training in XR that helps healthcare teams build speed, confidence, and competence. Code Blue's platform delivers realistic, hands-on medical simulation training.
                             </p>
                             <div class="d-flex gap-3 align-items-center" data-aos="fade-up" data-aos-delay="200">
                                 <a class="btn_pro_primary" href="mailto:contact@tacitly.com">Talk To Us</a>
@@ -376,7 +381,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="hero_imgBox" data-aos="fade-left">
-                            <img class="img-fluid w-100" src="assets/img/hero.png" alt="Tacitly XR Simulation Interface">
+                            <img class="img-fluid w-100" src="assets/img/hero.png" alt="XR Simulation Interface">
                         </div>
                     </div>
                 </div>
@@ -404,7 +409,7 @@
                          <div class="feedback_item">
                               <img class="client_companyLogo" src="assets/img/Dartmouth_Health.png" alt="Dartmouth Health">
                               <p class="feedback_text">
-                                  "Tacitly has a great team of energetic professionals. They are always ready to jump on a project and regardless of the difficulty, find a way to exceed expectations. It has been a pure pleasure working with this group."
+                                  "This team brings a great wave of professional energy. Regardless of difficulty, they look layout configurations in the eye and find a way to exceed expectations. It has been a pure pleasure working together."
                               </p>
                               <div>
                                   <div class="client_name">Daniel Robinson</div>
@@ -416,7 +421,7 @@
                           <div class="feedback_item">
                                <img class="client_companyLogo" src="assets/img/AHEC_2.png" alt="AHEC">
                                <p class="feedback_text">
-                                   "Partnering with Tacitly has allowed us to incorporate extended reality simulations into our programming, creating fun and exciting ways for students to gain knowledge and skills in healthcare."
+                                   "Partnering here has allowed us to incorporate extended reality simulations into our programming, creating fun and exciting ways for students to gain knowledge and skills in healthcare."
                                </p>
                                <div>
                                    <div class="client_name">Jennifer L. Scott, PsyD, ABPP</div>
@@ -428,7 +433,7 @@
                           <div class="feedback_item">
                                <img class="client_companyLogo" src="assets/img/Rutland_Regional_Medical_Center.png" alt="Rutland Regional Medical Center">
                                <p class="feedback_text">
-                                   "We love the concept and feel that it is an exciting educational tool for people who are interested in pursuing a career in healthcare. The team at Tacitly is professional and very easy to work with."
+                                   "We love the concept and feel that it is an exciting educational tool for people who are interested in pursuing a career in healthcare. The platform framework makes testing very easy to work with."
                                </p>
                                <div>
                                    <div class="client_name">Caitlin Gates</div>
@@ -442,11 +447,10 @@
 
         <section class="news_sec">
              <div class="container">
-                 <h2 class="news_secTitle text-center" data-aos="fade-up">In the Media</h2>
+                 <h2 class="news_secTitle text-center">In the Media</h2>
                  <div class="news_slider_container">
                      <button class="slide_btn slide_btn_left" id="slideLeft">&#8592;</button>
-                     <div class="news_scroll_wrapper" id="newsContainer">
-                          </div>
+                     <div class="news_scroll_wrapper" id="newsContainer"></div>
                      <button class="slide_btn slide_btn_right" id="slideRight">&#8594;</button>
                  </div>
              </div>
@@ -461,7 +465,7 @@
                 </div>
                 <div class="col-md-8 text-md-end">
                     <p class="footer_cText mb-0">
-                        Tacitly Inc. &copy; <span id="year"></span> All Rights Reserved.
+                        All Rights Reserved. &copy; <span id="year"></span>
                     </p>
                 </div>
             </div>
@@ -473,176 +477,172 @@
     <script src="assets/js/aos.js"></script>
     <script src="assets/js/script.js"></script>
 
-<script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
 
-    const newsData = [
-        {
-            title: "Five Startups Selected For Rutland's First-Ever Venture-Backed Accelerator",
-            publication: "Mountain Times",
-            excerpt: "Tacitly Inc. was selected as one of five startups chosen from 50+ applicants for the gBETA Rutland program, recognized for growth potential and investor readiness.",
-            date: "September 11, 2024",
-            link: "https://mountaintimes.info/2024/09/11/five-startups-selected-for-rutlandsfirst-ever-venture-backed-accelerator/"
-        },
-        {
-            title: "Green Mountain Accelerator Fund Makes First Investment in Tacitly",
-            publication: "Center on Rural Innovation",
-            excerpt: "The Green Mountain Accelerator Fund invested $75,000 in Rutland-based Tacitly, Inc., a tech startup specializing in AR and VR tools for training healthcare professionals.",
-            date: "June 2024",
-            link: "https://ruralinnovation.us/press-releases/green-mountain-accelerator-fund-makes-first-investment/"
-        },
-        {
-            title: "Tacitly, a StartUp Rutland Incubator Company Posts Big Progress",
-            publication: "Rutland Vermont",
-            excerpt: "Tacitly achieved milestones including LaunchVT cohort selection, a $5,000 AHEC grant, and first beta tests with 50+ nursing students at UVM and Castleton University.",
-            date: "2024",
-            link: "https://rutlandvermont.com/tacitly-a-startup-rutland-incubator-company-posts-big-progress/"
-        },
-        {
-            title: "A Rutland Startup Created a Virtual Reality Tool to Train Nurses in Emergency Responses",
-            publication: "VT Digger",
-            excerpt: "VR simulation enables nursing students and professionals to practice and improve their skills in a safe, controlled environment for real-life emergencies.",
-            date: "September 5, 2023",
-            link: "https://vtdigger.org/2023/09/05/a-rutland-startup-created-a-virtual-reality-tool-to-train-nurses-in-emergency-responses/"
-        },
-        {
-            title: "Chawla Comments to VTDigger on VR 'Crash Cart' Training Tool",
-            publication: "UVM Larner College of Medicine",
-            excerpt: "Raj Chawla, faculty technology liaison at Larner, discussed innovative VR crash cart technology for emergency response training.",
-            date: "September 2023",
-            link: "https://www.uvm.edu/larnermed/news/chawla-comments-vtdigger-vr-crash-cart-training-tool"
-        },
-        {
-            title: "Partnership Tests VT Virtual Tech Trains Future Nurses",
-            publication: "WCAX",
-            excerpt: "The University of Vermont and Castleton University have partnered using VR technology to help train future nurses through virtual simulations and clinical scenarios.",
-            date: "May 18, 2023",
-            link: "https://www.wcax.com/2023/05/18/partnership-tests-vt-virtual-tech-trains-future-nurses/"
-        },
-        {
-            title: "LaunchVT Announces 2023 Accelerator Cohort",
-            publication: "Vermont Biz",
-            excerpt: "LaunchVT's 2023 cohort includes eight Vermont startups paired with dedicated business coaches for a twelve-week intensive accelerator program.",
-            date: "April 2023",
-            link: "https://vermontbiz.com/news/2023/april/12/launchvt-announces-2023-accelerator-cohort"
-        },
-        {
-            title: "Southern Vermont AHEC Sponsors Tacitly's Innovative Work",
-            publication: "Southern Vermont AHEC",
-            excerpt: "Southern Vermont AHEC is thrilled to sponsor Tacitly's innovative work and be part of this groundbreaking initiative in healthcare training.",
-            date: "2023",
-            link: "https://www.facebook.com/svahec/posts/690107573125844/"
-        }
-    ];
+        const newsData = [
+            {
+                title: "Five Startups Selected For Rutland's First-Ever Venture-Backed Accelerator",
+                publication: "Mountain Times",
+                excerpt: "The team was selected as one of five startups chosen from 50+ applicants for the gBETA Rutland program, recognized for growth potential and investor readiness.",
+                date: "September 11, 2024",
+                link: "https://mountaintimes.info/2024/09/11/five-startups-selected-for-rutlandsfirst-ever-venture-backed-accelerator/"
+            },
+            {
+                title: "Green Mountain Accelerator Fund Makes First Investment in Healthcare Tech Startup",
+                publication: "Center on Rural Innovation",
+                excerpt: "The Green Mountain Accelerator Fund invested $75,000 in the Rutland-based tech startup specializing in AR and VR tools for training healthcare professionals.",
+                date: "June 2024",
+                link: "https://ruralinnovation.us/press-releases/green-mountain-accelerator-fund-makes-first-investment/"
+            },
+            {
+                title: "Incubator Company Posts Big Progress with Simulation Solutions",
+                publication: "Rutland Vermont",
+                excerpt: "Milestones achieved include LaunchVT cohort selection, a $5,000 AHEC grant, and first beta tests with 50+ nursing students at UVM and Castleton University.",
+                date: "2024",
+                link: "https://rutlandvermont.com/tacitly-a-startup-rutland-incubator-company-posts-big-progress/"
+            },
+            {
+                title: "A Rutland Startup Created a Virtual Reality Tool to Train Nurses in Emergency Responses",
+                publication: "VT Digger",
+                excerpt: "VR simulation enables nursing students and professionals to practice and improve their skills in a safe, controlled environment for real-life emergencies.",
+                date: "September 5, 2023",
+                link: "https://vtdigger.org/2023/09/05/a-rutland-startup-created-a-virtual-reality-tool-to-train-nurses-in-emergency-responses/"
+            },
+            {
+                title: "Chawla Comments to VTDigger on VR 'Crash Cart' Training Tool",
+                publication: "UVM Larner College of Medicine",
+                excerpt: "Raj Chawla, faculty technology liaison at Larner, discussed innovative VR crash cart technology for emergency response training.",
+                date: "September 2023",
+                link: "https://www.uvm.edu/larnermed/news/chawla-comments-vtdigger-vr-crash-cart-training-tool"
+            },
+            {
+                title: "Partnership Tests VT Virtual Tech Trains Future Nurses",
+                publication: "WCAX",
+                excerpt: "The University of Vermont and Castleton University have partnered using VR technology to help train future nurses through virtual simulations and clinical scenarios.",
+                date: "May 18, 2023",
+                link: "https://www.wcax.com/2023/05/18/partnership-tests-vt-virtual-tech-trains-future-nurses/"
+            },
+            {
+                title: "LaunchVT Announces 2023 Accelerator Cohort",
+                publication: "Vermont Biz",
+                excerpt: "LaunchVT's 2023 cohort includes eight Vermont startups paired with dedicated business coaches for a twelve-week intensive accelerator program.",
+                date: "April 2023",
+                link: "https://vermontbiz.com/news/2023/april/12/launchvt-announces-2023-accelerator-cohort"
+            },
+            {
+                title: "Southern Vermont AHEC Sponsors Innovative Simulation Work",
+                publication: "Southern Vermont AHEC",
+                excerpt: "Southern Vermont AHEC is thrilled to sponsor this innovative work and be part of this groundbreaking initiative in healthcare training.",
+                date: "2023",
+                link: "https://www.facebook.com/svahec/posts/690107573125844/"
+            }
+        ];
 
-    function createCardMarkup(item) {
-        return `
-            <div class="news_card">
-                <div class="news_content">
-                    <div class="news_publication">${item.publication}</div>
-                    <h3 class="news_title">${item.title}</h3>
-                    <p class="news_excerpt">${item.excerpt}</p>
-                    <div class="d-flex justify-content-between align-items-center pt-3 mt-auto border-top" style="border-color: var(--border-clean) !important;">
-                        <span style="font-size: 11px; color: var(--text-muted);">${item.date}</span>
-                        <a href="${item.link}" target="_blank" class="news_link">Read Article →</a>
+        function createCardMarkup(item) {
+            return `
+                <div class="news_card">
+                    <div class="news_content">
+                        <div class="news_publication">${item.publication}</div>
+                        <h3 class="news_title">${item.title}</h3>
+                        <p class="news_excerpt">${item.excerpt}</p>
+                        <div class="d-flex justify-content-between align-items-center pt-3 mt-auto border-top" style="border-color: var(--border-clean) !important;">
+                            <span style="font-size: 11px; color: var(--text-muted);">${item.date}</span>
+                            <a href="${item.link}" target="_blank" class="news_link">Read Article →</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        `;
-    }
+            `;
+        }
 
-    function renderNewsCards() {
-        const container = document.getElementById('newsContainer');
-        container.innerHTML = '';
+        function renderNewsCards() {
+            const container = document.getElementById('newsContainer');
+            container.innerHTML = '';
 
-        newsData.forEach((item) => {
-            const col = document.createElement('div');
-            col.className = 'news_scroll_item original_item px-2';
-            col.innerHTML = createCardMarkup(item);
-            container.appendChild(col);
-        });
+            // Clean nodes without data-aos attributes to bypass layout paint triggers
+            newsData.forEach((item) => {
+                const col = document.createElement('div');
+                col.className = 'news_scroll_item original_item px-2';
+                col.innerHTML = createCardMarkup(item);
+                container.appendChild(col);
+            });
 
-        newsData.forEach((item) => {
-            const col = document.createElement('div');
-            col.className = 'news_scroll_item cloned_item px-2';
-            col.innerHTML = createCardMarkup(item);
-            container.appendChild(col);
-        });
-    }
-
-    // Force rendering to happen immediately during parsing
-    renderNewsCards();
-
-    // Use window.onload to ensure ALL css layout engines have finished drawing card dimensions
-    window.onload = function() {
-        const scrollContainer = document.getElementById('newsContainer');
-        let isHovered = false;
-        let currentScroll = 0;
-        const pixelsPerSecond = 35; 
-        let lastTime = null;
-        let totalOriginalWidth = 0;
-
-        // Calculate track length safely
-        function calculateWidths() {
-            const originalItems = scrollContainer.querySelectorAll('.original_item');
-            totalOriginalWidth = 0;
-            originalItems.forEach(item => {
-                totalOriginalWidth += item.getBoundingClientRect().width;
+            newsData.forEach((item) => {
+                const col = document.createElement('div');
+                col.className = 'news_scroll_item cloned_item px-2';
+                col.innerHTML = createCardMarkup(item);
+                container.appendChild(col);
             });
         }
-        
-        // Run calculation once layouts are locked
-        calculateWidths();
 
-        // Re-calculate math if window sizes shift to protect layout widths
-        window.addEventListener('resize', calculateWidths);
+        // Render nodes immediately during browser compilation
+        renderNewsCards();
 
-        scrollContainer.addEventListener('mouseenter', () => isHovered = true);
-        scrollContainer.addEventListener('mouseleave', () => {
-            isHovered = false;
-            currentScroll = scrollContainer.scrollLeft;
-            lastTime = null; 
-        });
+        // Safe setup once viewport sizes and assets are locked by browser window
+        window.onload = function() {
+            const scrollContainer = document.getElementById('newsContainer');
+            let isHovered = false;
+            let currentScroll = 0;
+            const pixelsPerSecond = 35; 
+            let lastTime = null;
+            let totalOriginalWidth = 0;
 
-        scrollContainer.addEventListener('scroll', () => {
-            if (isHovered) {
+            function calculateWidths() {
+                const originalItems = scrollContainer.querySelectorAll('.original_item');
+                totalOriginalWidth = 0;
+                originalItems.forEach(item => {
+                    totalOriginalWidth += item.getBoundingClientRect().width;
+                });
+            }
+            
+            calculateWidths();
+            window.addEventListener('resize', calculateWidths);
+
+            scrollContainer.addEventListener('mouseenter', () => isHovered = true);
+            scrollContainer.addEventListener('mouseleave', () => {
+                isHovered = false;
                 currentScroll = scrollContainer.scrollLeft;
-            }
-        });
+                lastTime = null; 
+            });
 
-        function autoScroll(timestamp) {
-            if (!lastTime) lastTime = timestamp;
-            const deltaTime = (timestamp - lastTime) / 1000;
-            lastTime = timestamp;
-
-            if (!isHovered && totalOriginalWidth > 0) {
-                currentScroll += pixelsPerSecond * deltaTime;
-                
-                if (currentScroll >= totalOriginalWidth) {
-                    currentScroll = 0;
+            scrollContainer.addEventListener('scroll', () => {
+                if (isHovered) {
+                    currentScroll = scrollContainer.scrollLeft;
                 }
-                
-                scrollContainer.scrollLeft = currentScroll;
+            });
+
+            function autoScroll(timestamp) {
+                if (!lastTime) lastTime = timestamp;
+                const deltaTime = (timestamp - lastTime) / 1000;
+                lastTime = timestamp;
+
+                if (!isHovered && totalOriginalWidth > 0) {
+                    currentScroll += pixelsPerSecond * deltaTime;
+                    
+                    if (currentScroll >= totalOriginalWidth) {
+                        currentScroll = 0;
+                    }
+                    
+                    scrollContainer.scrollLeft = currentScroll;
+                }
+                requestAnimationFrame(autoScroll);
             }
+
             requestAnimationFrame(autoScroll);
-        }
 
-        requestAnimationFrame(autoScroll);
+            $('#slideRight').on('click', function() {
+                const cardWidth = $('.news_scroll_item').outerWidth();
+                currentScroll += cardWidth;
+                scrollContainer.scrollLeft = currentScroll;
+            });
 
-        // Arrow controls tracking variables correctly
-        $('#slideRight').on('click', function() {
-            const cardWidth = $('.news_scroll_item').outerWidth();
-            currentScroll += cardWidth;
-            scrollContainer.scrollLeft = currentScroll;
-        });
-
-        $('#slideLeft').on('click', function() {
-            const cardWidth = $('.news_scroll_item').outerWidth();
-            currentScroll -= cardWidth;
-            if (currentScroll < 0) currentScroll = 0;
-            scrollContainer.scrollLeft = currentScroll;
-        });
-    };
-</script>
+            $('#slideLeft').on('click', function() {
+                const cardWidth = $('.news_scroll_item').outerWidth();
+                currentScroll -= cardWidth;
+                if (currentScroll < 0) currentScroll = 0;
+                scrollContainer.scrollLeft = currentScroll;
+            });
+        };
+    </script>
 </body>
 </html>
