@@ -473,116 +473,173 @@
     <script src="assets/js/aos.js"></script>
     <script src="assets/js/script.js"></script>
 
-    <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-        // High-legitimacy array keeping the text tracking intact
-        const newsData = [
-            {
-                title: "Five Startups Selected For Rutland's First-Ever Venture-Backed Accelerator",
-                publication: "Mountain Times",
-                excerpt: "Tacitly Inc. was selected as one of five startups chosen from 50+ applicants for the gBETA Rutland program, recognized for growth potential and investor readiness.",
-                date: "September 11, 2024",
-                link: "https://mountaintimes.info/2024/09/11/five-startups-selected-for-rutlandsfirst-ever-venture-backed-accelerator/"
-            },
-            {
-                title: "Green Mountain Accelerator Fund Makes First Investment in Tacitly",
-                publication: "Center on Rural Innovation",
-                excerpt: "The Green Mountain Accelerator Fund invested $75,000 in Rutland-based Tacitly, Inc., a tech startup specializing in AR and VR tools for training healthcare professionals.",
-                date: "June 2024",
-                link: "https://ruralinnovation.us/press-releases/green-mountain-accelerator-fund-makes-first-investment/"
-            },
-            {
-                title: "Tacitly, a StartUp Rutland Incubator Company Posts Big Progress",
-                publication: "Rutland Vermont",
-                excerpt: "Tacitly achieved milestones including LaunchVT cohort selection, a $5,000 AHEC grant, and first beta tests with 50+ nursing students at UVM and Castleton University.",
-                date: "2024",
-                link: "https://rutlandvermont.com/tacitly-a-startup-rutland-incubator-company-posts-big-progress/"
-            },
-            {
-                title: "A Rutland Startup Created a Virtual Reality Tool to Train Nurses in Emergency Responses",
-                publication: "VT Digger",
-                excerpt: "VR simulation enables nursing students and professionals to practice and improve their skills in a safe, controlled environment for real-life emergencies.",
-                date: "September 5, 2023",
-                link: "https://vtdigger.org/2023/09/05/a-rutland-startup-created-a-virtual-reality-tool-to-train-nurses-in-emergency-responses/"
-            },
-            {
-                title: "Chawla Comments to VTDigger on VR 'Crash Cart' Training Tool",
-                publication: "UVM Larner College of Medicine",
-                excerpt: "Raj Chawla, faculty technology liaison at Larner, discussed innovative VR crash cart technology for emergency response training.",
-                date: "September 2023",
-                link: "https://www.uvm.edu/larnermed/news/chawla-comments-vtdigger-vr-crash-cart-training-tool"
-            },
-            {
-                title: "Partnership Tests VT Virtual Tech Trains Future Nurses",
-                publication: "WCAX",
-                excerpt: "The University of Vermont and Castleton University have partnered using VR technology to help train future nurses through virtual simulations and clinical scenarios.",
-                date: "May 18, 2023",
-                link: "https://www.wcax.com/2023/05/18/partnership-tests-vt-virtual-tech-trains-future-nurses/"
-            },
-            {
-                title: "LaunchVT Announces 2023 Accelerator Cohort",
-                publication: "Vermont Biz",
-                excerpt: "LaunchVT's 2023 cohort includes eight Vermont startups paired with dedicated business coaches for a twelve-week intensive accelerator program.",
-                date: "April 2023",
-                link: "https://vermontbiz.com/news/2023/april/12/launchvt-announces-2023-accelerator-cohort"
-            },
-            {
-                title: "Southern Vermont AHEC Sponsors Tacitly's Innovative Work",
-                publication: "Southern Vermont AHEC",
-                excerpt: "Southern Vermont AHEC is thrilled to sponsor Tacitly's innovative work and be part of this groundbreaking initiative in healthcare training.",
-                date: "2023",
-                link: "https://www.facebook.com/svahec/posts/690107573125844/"
-            }
-        ];
+    const newsData = [
+        {
+            title: "Five Startups Selected For Rutland's First-Ever Venture-Backed Accelerator",
+            publication: "Mountain Times",
+            excerpt: "Tacitly Inc. was selected as one of five startups chosen from 50+ applicants for the gBETA Rutland program, recognized for growth potential and investor readiness.",
+            date: "September 11, 2024",
+            link: "https://mountaintimes.info/2024/09/11/five-startups-selected-for-rutlandsfirst-ever-venture-backed-accelerator/"
+        },
+        {
+            title: "Green Mountain Accelerator Fund Makes First Investment in Tacitly",
+            publication: "Center on Rural Innovation",
+            excerpt: "The Green Mountain Accelerator Fund invested $75,000 in Rutland-based Tacitly, Inc., a tech startup specializing in AR and VR tools for training healthcare professionals.",
+            date: "June 2024",
+            link: "https://ruralinnovation.us/press-releases/green-mountain-accelerator-fund-makes-first-investment/"
+        },
+        {
+            title: "Tacitly, a StartUp Rutland Incubator Company Posts Big Progress",
+            publication: "Rutland Vermont",
+            excerpt: "Tacitly achieved milestones including LaunchVT cohort selection, a $5,000 AHEC grant, and first beta tests with 50+ nursing students at UVM and Castleton University.",
+            date: "2024",
+            link: "https://rutlandvermont.com/tacitly-a-startup-rutland-incubator-company-posts-big-progress/"
+        },
+        {
+            title: "A Rutland Startup Created a Virtual Reality Tool to Train Nurses in Emergency Responses",
+            publication: "VT Digger",
+            excerpt: "VR simulation enables nursing students and professionals to practice and improve their skills in a safe, controlled environment for real-life emergencies.",
+            date: "September 5, 2023",
+            link: "https://vtdigger.org/2023/09/05/a-rutland-startup-created-a-virtual-reality-tool-to-train-nurses-in-emergency-responses/"
+        },
+        {
+            title: "Chawla Comments to VTDigger on VR 'Crash Cart' Training Tool",
+            publication: "UVM Larner College of Medicine",
+            excerpt: "Raj Chawla, faculty technology liaison at Larner, discussed innovative VR crash cart technology for emergency response training.",
+            date: "September 2023",
+            link: "https://www.uvm.edu/larnermed/news/chawla-comments-vtdigger-vr-crash-cart-training-tool"
+        },
+        {
+            title: "Partnership Tests VT Virtual Tech Trains Future Nurses",
+            publication: "WCAX",
+            excerpt: "The University of Vermont and Castleton University have partnered using VR technology to help train future nurses through virtual simulations and clinical scenarios.",
+            date: "May 18, 2023",
+            link: "https://www.wcax.com/2023/05/18/partnership-tests-vt-virtual-tech-trains-future-nurses/"
+        },
+        {
+            title: "LaunchVT Announces 2023 Accelerator Cohort",
+            publication: "Vermont Biz",
+            excerpt: "LaunchVT's 2023 cohort includes eight Vermont startups paired with dedicated business coaches for a twelve-week intensive accelerator program.",
+            date: "April 2023",
+            link: "https://vermontbiz.com/news/2023/april/12/launchvt-announces-2023-accelerator-cohort"
+        },
+        {
+            title: "Southern Vermont AHEC Sponsors Tacitly's Innovative Work",
+            publication: "Southern Vermont AHEC",
+            excerpt: "Southern Vermont AHEC is thrilled to sponsor Tacitly's innovative work and be part of this groundbreaking initiative in healthcare training.",
+            date: "2023",
+            link: "https://www.facebook.com/svahec/posts/690107573125844/"
+        }
+    ];
 
-        function renderNewsCards() {
-            const container = document.getElementById('newsContainer');
-            container.innerHTML = '';
-
-            newsData.forEach((item, index) => {
-                const col = document.createElement('div');
-                col.className = 'news_scroll_item px-2';
-                col.setAttribute('data-aos', 'fade-up');
-                col.setAttribute('data-aos-delay', (index * 50).toString());
-
-                const card = document.createElement('div');
-                card.className = 'news_card';
-                card.innerHTML = `
-                    <div class="news_content">
-                        <div class="news_publication">${item.publication}</div>
-                        <h3 class="news_title">${item.title}</h3>
-                        <p class="news_excerpt">${item.excerpt}</p>
-                        <div class="d-flex justify-content-between align-items-center pt-3 mt-auto border-top" style="border-color: var(--border-clean) !important;">
-                            <span style="font-size: 11px; color: var(--text-muted);">${item.date}</span>
-                            <a href="${item.link}" target="_blank" class="news_link">Read Article →</a>
-                        </div>
+    function createCardMarkup(item) {
+        return `
+            <div class="news_card">
+                <div class="news_content">
+                    <div class="news_publication">${item.publication}</div>
+                    <h3 class="news_title">${item.title}</h3>
+                    <p class="news_excerpt">${item.excerpt}</p>
+                    <div class="d-flex justify-content-between align-items-center pt-3 mt-auto border-top" style="border-color: var(--border-clean) !important;">
+                        <span style="font-size: 11px; color: var(--text-muted);">${item.date}</span>
+                        <a href="${item.link}" target="_blank" class="news_link">Read Article →</a>
                     </div>
-                `;
-                col.appendChild(card);
-                container.appendChild(col);
-            });
+                </div>
+            </div>
+        `;
+    }
 
-            if (typeof AOS !== 'undefined') {
-                AOS.refresh();
+    function renderNewsCards() {
+        const container = document.getElementById('newsContainer');
+        container.innerHTML = '';
+
+        // Render original set of items
+        newsData.forEach((item) => {
+            const col = document.createElement('div');
+            col.className = 'news_scroll_item original_item px-2';
+            col.innerHTML = createCardMarkup(item);
+            container.appendChild(col);
+        });
+
+        // Clone the entire set and append to the end for seamless infinite loop text matching
+        newsData.forEach((item) => {
+            const col = document.createElement('div');
+            col.className = 'news_scroll_item cloned_item px-2';
+            col.innerHTML = createCardMarkup(item);
+            container.appendChild(col);
+        });
+
+        if (typeof AOS !== 'undefined') {
+            AOS.refresh();
+        }
+    }
+
+    $(document).ready(function() {
+        renderNewsCards();
+
+        const scrollContainer = document.getElementById('newsContainer');
+        let isHovered = false;
+        let currentScroll = 0;
+        const scrollSpeed = 0.6; // Adjust this number to make it faster or slower
+
+        // Track hover state
+        scrollContainer.addEventListener('mouseenter', () => {
+            isHovered = true;
+        });
+
+        scrollContainer.addEventListener('mouseleave', () => {
+            isHovered = false;
+            // Sync current position back to track state if user manually scrolled during pause
+            currentScroll = scrollContainer.scrollLeft;
+        });
+
+        // Fallback sync if user physically drags scrollbar
+        scrollContainer.addEventListener('scroll', () => {
+            if (isHovered) {
+                currentScroll = scrollContainer.scrollLeft;
             }
+        });
+
+        function autoScroll() {
+            if (!isHovered) {
+                currentScroll += scrollSpeed;
+                
+                // Calculate total scroll width of just the original non-cloned nodes
+                const originalItems = scrollContainer.querySelectorAll('.original_item');
+                let totalOriginalWidth = 0;
+                originalItems.forEach(item => {
+                    totalOriginalWidth += item.offsetWidth;
+                });
+
+                // When we have fully scrolled past the original set, loop back silently
+                if (currentScroll >= totalOriginalWidth) {
+                    currentScroll = 0;
+                }
+                
+                scrollContainer.scrollLeft = currentScroll;
+            }
+            requestAnimationFrame(autoScroll);
         }
 
-        $(document).ready(function() {
-            renderNewsCards();
+        // Initialize animation loop
+        requestAnimationFrame(autoScroll);
 
-            const scrollContainer = $('#newsContainer');
-            
-            $('#slideRight').on('click', function() {
-                const cardWidth = $('.news_scroll_item').outerWidth();
-                scrollContainer.animate({ scrollLeft: scrollContainer.scrollLeft() + cardWidth }, 300);
-            });
-
-            $('#slideLeft').on('click', function() {
-                const cardWidth = $('.news_scroll_item').outerWidth();
-                scrollContainer.animate({ scrollLeft: scrollContainer.scrollLeft() - cardWidth }, 300);
-            });
+        // Retain original side buttons click functionality safely paired with the tracker loop
+        $('#slideRight').on('click', function() {
+            const cardWidth = $('.news_scroll_item').outerWidth();
+            currentScroll += cardWidth;
+            scrollContainer.scrollLeft = currentScroll;
         });
-    </script>
+
+        $('#slideLeft').on('click', function() {
+            const cardWidth = $('.news_scroll_item').outerWidth();
+            currentScroll -= cardWidth;
+            if (currentScroll < 0) currentScroll = 0;
+            scrollContainer.scrollLeft = currentScroll;
+        });
+    });
+</script>
 </body>
 </html>
